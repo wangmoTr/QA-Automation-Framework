@@ -8,6 +8,10 @@ public class LoginTests {
     @Test
     public static void LoginEmptyEmailPasswordTest () {
 
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+            System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+        }
+
         WebDriver driver = new ChromeDriver();
         String url = "https://bbb.testpro.io/";
         driver.get(url);
