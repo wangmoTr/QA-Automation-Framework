@@ -168,7 +168,8 @@ public class LoginTests {
 
         WebElement songMenu = driver.findElement(By.className("songs"));
         songMenu.click();
-
+        // short way
+        driver.findElement(song).click();
 
 
         Thread.sleep(5000);
