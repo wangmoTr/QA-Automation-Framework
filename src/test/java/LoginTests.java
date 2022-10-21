@@ -22,6 +22,7 @@ public class LoginTests {
         driver.quit();
     }
     @Test
+<<<<<<< Updated upstream
     public static void searchSongbyTrangCode () throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
@@ -83,4 +84,21 @@ public class LoginTests {
         }
 
     }
+=======
+    public static void LoginGoodPassWord () {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
+    }
+
+
+>>>>>>> Stashed changes
 }
