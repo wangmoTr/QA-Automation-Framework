@@ -21,22 +21,6 @@ public class LoginTests {
 
         driver.quit();
     }
- 
-=======
-    public static void LoginGoodPassWord () {
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-//        By emailFieldSelector = driver.findElement(By.xpath("//input[@type='email"));
-    }
 
 
->>>>>>> Stashed changes
 }
