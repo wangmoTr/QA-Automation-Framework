@@ -22,7 +22,6 @@ public class LoginTests {
         driver.quit();
     }
     @Test
-<<<<<<< Updated upstream
     public static void searchSongbyTrangCode () throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
