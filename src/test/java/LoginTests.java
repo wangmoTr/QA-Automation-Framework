@@ -169,7 +169,7 @@ public class LoginTests {
         WebElement songMenu = driver.findElement(By.className("songs"));
         songMenu.click();
         // short way
-        driver.findElement(song).click();
+        //driver.findElement(songMenu).click();
 
 
         Thread.sleep(5000);
@@ -189,12 +189,36 @@ public class LoginTests {
         WebElement registrationBtn = driver.findElement(By.id("hel"));
         registrationBtn.click();
 
+        Thread.sleep(5000);
+        driver.quit();
 
+    }
+    @Test
+    public static void HW15 () throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
 
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        String url = "https://bbb.testpro.io/#!/home";
+        driver.get(url);
 
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        emailField.click();
+        emailField.sendKeys("demo@class.com");
 
+        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        passwordField.click();
+        passwordField.sendKeys("te$t$tudent");
 
+        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+        submitButton.click();
+
+//        WebElement searchButton = driver.findElement(By.cssSelector("[type='search']"));
+//        searchButton.click();
+
+        WebElement searchField = driver.findElement(By.cssSelector("[type='search']"));
+        searchField.click();
+        searchField.sendKeys("Pluto");
 
         Thread.sleep(5000);
         driver.quit();
