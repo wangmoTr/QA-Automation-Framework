@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import stash.Stashed;
 
 
 import java.time.Duration;
@@ -73,7 +74,7 @@ public class LoginTests {
             driver.quit();
         }
 
-<<<<<<< Updated upstream
+
     }
     @Test
     public static void LoginInvalidEmailTest () throws InterruptedException {
@@ -224,7 +225,7 @@ public class LoginTests {
         Thread.sleep(5000);
         driver.quit();
 
-=======
+
 //    }
 //    @Test
 //    public static void LoginInvalidEmailTest () throws InterruptedException {
@@ -343,6 +344,6 @@ public class LoginTests {
 //
 //
 //    }
->>>>>>> Stashed changes
+
 
 }
