@@ -54,6 +54,11 @@ public class LoginTests {
             WebElement queueContainer = driver.findElement(By.id("queueWrapper"));
             Assert.assertTrue(queueContainer.isDisplayed());
 
+            WebElement artists = driver.findElement(By.cssSelector("[href=\"#!/artists\"]"));
+            //Assert.assertTrue(avatarIcon.isDisplayed());
+            artists.click();
+
+
 
 
             Thread.sleep(8000);
