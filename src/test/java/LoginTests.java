@@ -251,15 +251,6 @@ public class LoginTests {
 
            // By emailFieldSelector = By.cssSelector("[type='email']");
             //*[@id="app"]/div/form/input[1]
-            By emailFieldSelector = By.xpath("//*[@type=\"email\"]");
-            By passFieldSelector = By.xpath("//*[@type=\"password\"]");
-            By submitButtonSelector = By.xpath("//*[@type=\"submit\"]");
-            By avatarIconSelector = By.xpath("//img[@alt='Avatar of 5d247fddf6d0448793efa922e5bc9728']");
-            By queueLinkSelector = By.xpath("//*[@href=\"#!/queue\"]");
-            By queueContainerSelector = By.xpath("//*[@id='queueWrapper']");
-            //By homeLinkSelector = By.linkText("Home");   //*[text()='Home']
-            By homeLinkSelector = By.xpath("//*[text()='Home']");
-            By searchFieldSelector = By.xpath("//*[@name='q']");
 
             String loginEmail = "demo@class.com";
             String loginPass ="te$t$tudent";
@@ -267,27 +258,18 @@ public class LoginTests {
 
             driver.get(url);
 
-            WebElement emailField = driver.findElement(emailFieldSelector);
-            emailField.click();
-            emailField.sendKeys(loginEmail);
+            Selectors selectMe = new Selectors();
 
-//            WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-            WebElement passwordField = driver.findElement(passFieldSelector);
-            passwordField.click();
-            passwordField.sendKeys(loginPass);
-
-
-            WebElement submitButton = driver.findElement(submitButtonSelector);
-            submitButton.click();
+            Login(loginEmail,loginPass,driver);
             //
-            WebElement avatarIcon = driver.findElement(avatarIconSelector);
+            WebElement avatarIcon = driver.findElement(selectMe.avatarIconSelector);
             Assert.assertTrue(avatarIcon.isDisplayed());
 
             //search pluto with xpath and validate the song is correct xpath //article//*[contains(text(),'Pluto']
 
             //*[@data-test='song-card']//*[contains(text(),'Pluto')]
 
-            WebElement searchField = driver.findElement(searchFieldSelector);
+            WebElement searchField = driver.findElement(selectMe.searchFieldSelector);
             searchField.click();
             searchField.sendKeys("Pluto");
             // how to validate song pluto
@@ -303,5 +285,24 @@ public class LoginTests {
         }
 
     }
+    public static void Login(String loginEmail, String loginPass, WebDriver driver ) {
+        Selectors selectMe = new Selectors();
+        WebElement emailField = driver.findElement(selectMe.emailFieldSelector);
+        emailField.click();
+        emailField.sendKeys(loginEmail);
+
+//            WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        WebElement passwordField = driver.findElement(selectMe.passFieldSelector);
+        passwordField.click();
+        passwordField.sendKeys(loginPass);
+
+
+        WebElement submitButton = driver.findElement(selectMe.submitButtonSelector);
+        submitButton.click();
+
+    }
+
+
+
 }
 
