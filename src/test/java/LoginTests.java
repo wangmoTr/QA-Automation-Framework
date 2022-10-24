@@ -221,6 +221,7 @@ public class LoginTests {
          WebElement isCorrectSong = driver.findElement(By.cssSelector("#searchExcerptsWrapper > div > div > section.songs > ul > article > span.main > span.details"));
          Assert.assertTrue(isCorrectSong.isDisplayed());
          Assert.assertTrue(true, "Pluto");
+         Assert.assertEquals(isCorrectSong,"Pluto");
 
         Thread.sleep(5000);
         driver.quit();
