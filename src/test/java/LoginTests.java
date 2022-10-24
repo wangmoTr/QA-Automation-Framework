@@ -220,6 +220,7 @@ public class LoginTests {
 
          WebElement isCorrectSong = driver.findElement(By.cssSelector("#searchExcerptsWrapper > div > div > section.songs > ul > article > span.main > span.details"));
          Assert.assertTrue(isCorrectSong.isDisplayed());
+         Assert.assertTrue(true, "Pluto");
 
         Thread.sleep(5000);
         driver.quit();
@@ -280,6 +281,20 @@ public class LoginTests {
             //
             WebElement avatarIcon = driver.findElement(avatarIconSelector);
             Assert.assertTrue(avatarIcon.isDisplayed());
+
+            //search pluto with xpath and validate the song is correct xpath //article//*[contains(text(),'Pluto']
+
+            //*[@data-test='song-card']//*[contains(text(),'Pluto')]
+
+            WebElement searchField = driver.findElement(searchFieldSelector);
+            searchField.click();
+            searchField.sendKeys("Pluto");
+            // how to validate song pluto
+
+            WebElement isCorrectSong = driver.findElement(By.xpath("//*[@data-test='song-card']//*[contains(text(),'Pluto')]"));
+            Assert.assertTrue(isCorrectSong.isDisplayed());
+            Assert.assertTrue(true, "Pluto");
+
         } finally {
             Thread.sleep(2000);
             //Assert.assertEquals(driver.getCurrentUrl(), url);
