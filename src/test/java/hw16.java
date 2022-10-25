@@ -32,8 +32,12 @@ public class hw16 extends BaseTest{
             Login(loginEmail,loginPass,driver);
             //search for adding playlist btn//*[@data-testid="sidebar-create-playlist-btn"]
 
-            WebElement searchAddingNewPlayListBtn = driver.findElement(By.xpath("//*[@data-testid=\"sidebar-create-playlist-btn"));
-           searchAddingNewPlayListBtn.click();
+            WebElement searchAddingNewPlayListBtn = driver.findElement(By.xpath("//*[@data-testid='sidebar-create-playlist-btn']"));
+            searchAddingNewPlayListBtn.click();
+            Thread.sleep(1000);
+            //select new playlistb   //*[@data-testid="playlist-context-menu-create-simple"]
+            WebElement selectNewPlaylist = driver.findElement(By.xpath("//*[@data-testid='playlist-context-menu-create-simple']"));
+            selectNewPlaylist.click();
             Thread.sleep(2000);
 
         } finally {
