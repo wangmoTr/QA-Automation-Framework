@@ -37,6 +37,7 @@ public class hw16 extends BaseTest{
             Thread.sleep(1000);
             //select new playlistb   //*[@data-testid="playlist-context-menu-create-simple"]
             WebElement selectNewPlaylist = driver.findElement(By.xpath("//*[@data-testid='playlist-context-menu-create-simple']"));
+            //WebElement selectNewPlaylist = driver.findElement(By.xpath("//*[contains(text(),'New Playlist']"));
             selectNewPlaylist.click();
             Thread.sleep(2000);
 
