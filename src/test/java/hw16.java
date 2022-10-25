@@ -40,6 +40,10 @@ public class hw16 extends BaseTest{
             //WebElement selectNewPlaylist = driver.findElement(By.xpath("//*[contains(text(),'New Playlist']"));
             selectNewPlaylist.click();
             Thread.sleep(2000);
+            //enter
+//            WebElement newNameList = driver.findElement(By.xpath("//*[@name='name']"));
+//            newNameList.sendKeys("legolas");
+//            Thread.sleep(2000);
 
         } finally {
             Thread.sleep(2000);
