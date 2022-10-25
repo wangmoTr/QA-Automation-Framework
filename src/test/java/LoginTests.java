@@ -9,15 +9,15 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
 
-    @Test(enabled = false, priority = 0)
+    @Test(priority = 0)
     public void LoginEmptyEmailPasswordTest () {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test(enabled = false, priority = 1)
-    public void LoginValidEmailValidPasswordTest ()  {
+    @Test(priority = 1)
+    public void LoginValidEmailValidPasswordTest () {
 
-        provideEmail("demo@class.com");
+        provideEmail("dem@class.com");
         providePassword();
         clickSubmitBtn();
 
@@ -26,8 +26,7 @@ public class LoginTests extends BaseTest {
 
     }
 
-
-//    @Test(priority = 2)
+    @Test(priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         provideEmail("dem@class.com");
         providePassword();
