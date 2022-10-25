@@ -9,9 +9,9 @@ import stash.Stashed;
 
 import java.time.Duration;
 
-public void class hw16 extends BaseTest{
+public class hw16 extends BaseTest{
     @Test
-    public static void hw16() throws InterruptedException {
+    public static void homework16() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
 
         try {
@@ -30,22 +30,11 @@ public void class hw16 extends BaseTest{
             Selectors selectMe = new Selectors();
 
             Login(loginEmail,loginPass,driver);
-            //
-            WebElement avatarIcon = driver.findElement(selectMe.avatarIconSelector);
-            Assert.assertTrue(avatarIcon.isDisplayed());
+            //search for adding playlist btn//*[@data-testid="sidebar-create-playlist-btn"]
 
-            //search pluto with xpath and validate the song is correct xpath //article//*[contains(text(),'Pluto']
-
-            //*[@data-test='song-card']//*[contains(text(),'Pluto')]
-
-            WebElement searchField = driver.findElement(selectMe.searchFieldSelector);
-            searchField.click();
-            searchField.sendKeys("Pluto");
-            // how to validate song pluto
-
-            WebElement isCorrectSong = driver.findElement(By.xpath("//*[@data-test='song-card']//*[contains(text(),'Pluto')]"));
-            Assert.assertTrue(isCorrectSong.isDisplayed());
-            Assert.assertTrue(true, "Pluto");
+            WebElement searchAddingNewPlayListBtn = driver.findElement(By.xpath("//*[@data-testid=\"sidebar-create-playlist-btn"));
+           searchAddingNewPlayListBtn.click();
+            Thread.sleep(2000);
 
         } finally {
             Thread.sleep(2000);
@@ -71,6 +60,4 @@ public void class hw16 extends BaseTest{
 
     }
 
-
-}
 }

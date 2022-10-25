@@ -9,7 +9,7 @@ import stash.Stashed;
 
 import java.time.Duration;
 
-public void class hw15 extends BaseTest{
+public class hw15 extends BaseTest{
 
     @Test
     public static void HW15() throws InterruptedException {
