@@ -21,7 +21,7 @@ public class BaseTest {
         }
     }
 
-//    @AfterMethod
+    @AfterMethod
     public void teadDownBrowser() {
         driver.quit();
     }
