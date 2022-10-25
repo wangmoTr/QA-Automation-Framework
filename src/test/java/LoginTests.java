@@ -3,18 +3,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests extends BaseTest {
-
-    @Test(enabled = false, priority = 0)
+public class LoginTests {
+    @BeforeMethod
+    public void launchBrowser() {
+        WebDriver driver;
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+    @Test
     public void LoginEmptyEmailPasswordTest () {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test(enabled = false, priority = 1)
+    @Test
     public void LoginValidEmailValidPasswordTest ()  {
 
         provideEmail("demo@class.com");
@@ -26,8 +32,6 @@ public class LoginTests extends BaseTest {
 
     }
 
-
-    //    @Test(priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         provideEmail("dem@class.com");
         providePassword();
@@ -39,11 +43,8 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test(enabled = false)
+    @Test
     public void LoginValidEmailEmptyPasswordTest () {
-        WebDriver driver;
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://bbb.testpro.io/";
         driver.get(url);
@@ -64,11 +65,8 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
 
-    @Test(enabled = false)
+    @Test
     public void SwitchToSongsMenu () throws InterruptedException {
-        WebDriver driver;
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://bbb.testpro.io/";
         driver.get(url);
@@ -95,11 +93,8 @@ public class LoginTests extends BaseTest {
         driver.quit();
     }
 
-    @Test(enabled = false)
+    @Test
     public void SearchSong () throws InterruptedException {
-        WebDriver driver;
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         String url = "https://bbb.testpro.io/";
         driver.get(url);
