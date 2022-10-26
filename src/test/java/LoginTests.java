@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests {
+public class LoginTests  {
     WebDriver driver;
     String url;
     @BeforeMethod
@@ -29,7 +29,7 @@ public class LoginTests {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    //@Test
+    @Test
     public void LoginValidEmailValidPasswordTest ()  {
 
 //        provideEmail("demo@class.com");
@@ -40,7 +40,7 @@ public class LoginTests {
         Assert.assertTrue(avatarIcon.isDisplayed());
 
     }
-
+    @Test
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
 //        provideEmail("dem@class.com");
 //        providePassword();
