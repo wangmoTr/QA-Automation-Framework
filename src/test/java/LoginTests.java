@@ -12,15 +12,36 @@ public class LoginTests extends BaseTest {
     @Test
     public void LoginValidEmailValidPasswordTest ()  {
 
+<<<<<<< Updated upstream
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
+=======
+//        provideEmail("demo@class.com");
+//        providePassword();
+//        clickSubmitBtn();
+//
+//        WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
+//        Assert.assertTrue(avatarIcon.isDisplayed());
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        emailField.click();
+        emailField.sendKeys("demo@class.com");
 
-        WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
+        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        passwordField.click();
+        passwordField.sendKeys("te$t$tudent");
+>>>>>>> Stashed changes
+
+        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+        submitButton.click();
+
+        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
+        //Thread.sleep(2000);
+        driver.quit();
 
     }
-    @Test
+   // @Test
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
         provideEmail("dem@class.com");
         providePassword("te$t$tudent");
@@ -50,6 +71,7 @@ public class LoginTests extends BaseTest {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
 
+<<<<<<< Updated upstream
     }
 
     @Test
@@ -58,6 +80,8 @@ public class LoginTests extends BaseTest {
         providePassword("");
         clickSubmitBtn();
 
+=======
+>>>>>>> Stashed changes
         WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
 
