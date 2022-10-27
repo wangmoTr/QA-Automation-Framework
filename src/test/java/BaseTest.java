@@ -3,10 +3,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.openqa.selenium.By;
+import org.testng.annotations.*;
+
+import java.time.Duration;
 
 import java.time.Duration;
 
 public class BaseTest {
+
 
     @BeforeSuite
     public static void chromeConfigs() {
@@ -14,23 +19,5 @@ public class BaseTest {
         if (System.getProperty("os.name").toLowerCase().contains("win")) {
             System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         }
-    }
 
-    WebDriver driver;
-    String url;
-
-    @BeforeMethod
-    public void launchBrowser() {
-
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        String url = "https://bbb.testpro.io/";
-        driver.get(url);
-    }
-
-    @AfterMethod
-    public void tearDownBrowser() {
-        driver.quit();
-
-    }
 }
