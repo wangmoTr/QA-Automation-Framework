@@ -1,29 +1,9 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class LoginTests extends BaseTest {
-    WebDriver driver;
-    String url;
-    @BeforeMethod
-    public void launchBrowser() {
-
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        String url = "https://bbb.testpro.io/";
-        driver.get(url);
-    }
-    @AfterMethod
-    public void tearDownBrowser() {
-        driver.quit();
-    }
     @Test
     public void LoginEmptyEmailPasswordTest () {
         Assert.assertEquals(driver.getCurrentUrl(), url);
@@ -32,9 +12,9 @@ public class LoginTests extends BaseTest {
     @Test
     public void LoginValidEmailValidPasswordTest ()  {
 
-//        provideEmail("demo@class.com");
-//        providePassword();
-//        clickSubmitBtn();
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
         Assert.assertTrue(avatarIcon.isDisplayed());
@@ -42,9 +22,9 @@ public class LoginTests extends BaseTest {
     }
     @Test
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-//        provideEmail("dem@class.com");
-//        providePassword();
-//        clickSubmitBtn();
+        provideEmail("dem@class.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
 
         // Vd
         Thread.sleep(2000);
@@ -52,21 +32,34 @@ public class LoginTests extends BaseTest {
 
     }
 
-    @Test
-    public void LoginValidEmailEmptyPasswordTest () {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-        emailField.click();
-        emailField.sendKeys("demo@class.com");
-
+    private void providePassword(String s) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
-        passwordField.sendKeys("te$t$tudent");
+        passwordField.sendKeys(s);
+    }
 
+
+    private void provideEmail(String emails) {
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        emailField.click();
+        emailField.sendKeys(emails);
+
+    }
+
+    private void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
 
-//        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
-//        Assert.assertTrue(avatarIcon.isDisplayed());
+    }
+
+    @Test
+    public void LoginValidEmailEmptyPasswordTest () {
+        provideEmail("dem@class.com");
+        providePassword("");
+        clickSubmitBtn();
+
+        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
+        Assert.assertTrue(avatarIcon.isDisplayed());
 
         driver.quit();
     }
