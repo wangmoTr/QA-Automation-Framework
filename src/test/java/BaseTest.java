@@ -21,8 +21,9 @@ public class BaseTest {
 
     @BeforeMethod
     @Parameters({"baseURL"})
-    public void launchBrowser(String baseURL) {
-
+    public void launchBrowser(@Optional String baseURL) {
+        if (baseURL == null)
+            baseURL ="https://bbb.testpro.io";
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         url = baseURL;
@@ -30,7 +31,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void teadDownBrowser() {
+    public void tearDownBrowser() {
         driver.quit();
     }
 
