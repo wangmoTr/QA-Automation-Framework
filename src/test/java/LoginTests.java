@@ -21,26 +21,25 @@ public class LoginTests {
         String url = "https://bbb.testpro.io/";
         driver.get(url);
 
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-        emailField.click();
-        emailField.sendKeys("demo@class.com");
+//        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+//        emailField.click();
+//        emailField.sendKeys("");
+//
+//        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+//        passwordField.click();
+//        passwordField.sendKeys("");
 
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-        passwordField.click();
-        passwordField.sendKeys("te$t$tudent");
+         try {
+             WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+             submitButton.click();
 
+             Thread.sleep(2000);
+             Assert.assertEquals(driver.getCurrentUrl(), url);
+         }
+         finally {
+             driver.quit();
+         }
 
-        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
-        submitButton.click();
-        //
-        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
-        Assert.assertTrue(avatarIcon.isDisplayed());
-
-
-
-        Thread.sleep(5000);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
     }
 
     @Test
@@ -54,7 +53,7 @@ public class LoginTests {
 
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
-        emailField.sendKeys("dem@class.com");
+        emailField.sendKeys("trangoishi99@gmail.com");
 
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
@@ -84,7 +83,7 @@ public class LoginTests {
 
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
-        passwordField.sendKeys("te$t$tudent");
+        passwordField.sendKeys("te$t$tuden");
 
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
@@ -115,8 +114,6 @@ public class LoginTests {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
 
-        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
-        Assert.assertTrue(avatarIcon.isDisplayed());
 
         driver.quit();
     }
@@ -138,7 +135,7 @@ public class LoginTests {
         By allButtonSelector = By.className("btn-shuffle-all");
 
         emailField.click();
-        emailField.sendKeys("demo@class.com");
+        emailField.sendKeys("trangoishi99@gmail.com");
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
         submitButton.click();
@@ -160,31 +157,30 @@ public class LoginTests {
 
         String url = "https://bbb.testpro.io/";
         driver.get(url);
-        By emailSelector = By.cssSelector("[type='email']");
-        WebElement emailField = driver.findElement(emailSelector);
+        //By emailSelector = By.cssSelector("[type='email']");
+        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         By avatarSelector = By.cssSelector("[alt='Avatar of student']");
-        By searchBarSelector = By.id("searchForm");
-        By allButtonSelector = By.className("btn-shuffle-all");
-
+        //By searchBarSelector = By.id("searchForm");
+        WebElement searchBarSelector = driver.findElement(By.cssSelector("[type='search']"));
+        //By allButtonSelector = By.className("btn-shuffle-all");
         emailField.click();
         emailField.sendKeys("demo@class.com");
+
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
+
         submitButton.click();
         Assert.assertTrue(driver.findElement(avatarSelector).isDisplayed());
         // WebElement songsMenu = driver.findElement(By.className("songs"));
         // WebElement songsMenu = driver.findElement(songMenuSelector);
-        driver.findElement(searchBarSelector).click();
-        driver.findElement(searchBarSelector).sendKeys("Veggie Straws");
+
+        searchBarSelector.sendKeys("Veggie Straws");
+        Thread.sleep(2000);
+        searchBarSelector.click();
         //Assert.assertTrue(driver.findElement().isDisplayed());
         Thread.sleep(5000);
-
-
-        url = "https://bbb.testpro.io/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
 
