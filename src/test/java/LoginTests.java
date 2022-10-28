@@ -3,53 +3,41 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-
 import java.time.Duration;
 
 public class LoginTests {
+    WebDriver driver;
+    String url;
+    @BeforeMethod
+    public void launchBrowser() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        url = "https://bbb.testpro.io/";
+        driver.get(url);
+    }
+    @AfterMethod
+    public void tearDownBrowser() {
+        driver.quit();
+    }
 
     @Test
-
-    public static void LoginEmptyEmailPasswordTest () throws InterruptedException {
-
-        WebDriver driver = new ChromeDriver();
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://bbb.testpro.io/";
-        driver.get(url);
-
-//        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-//        emailField.click();
-//        emailField.sendKeys("");
-//
-//        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-//        passwordField.click();
-//        passwordField.sendKeys("");
-
-         try {
-             WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
-             submitButton.click();
-
-             Thread.sleep(2000);
+    public void LoginEmptyEmailPasswordTest ()  {
              Assert.assertEquals(driver.getCurrentUrl(), url);
-         }
-         finally {
              driver.quit();
-         }
 
     }
 
     @Test
     public void LoginValidEmailValidPasswordTest ()  {
-        WebDriver driver;
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://bbb.testpro.io/";
-        driver.get(url);
+//        WebDriver driver;
+//        driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//
+//        String url = "https://bbb.testpro.io/";
+//        driver.get(url);
 
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
@@ -70,12 +58,12 @@ public class LoginTests {
 
     @Test
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-        WebDriver driver;
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://bbb.testpro.io/";
-        driver.get(url);
+//        WebDriver driver;
+//        driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//
+//        String url = "https://bbb.testpro.io/";
+//        driver.get(url);
 
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
@@ -95,7 +83,7 @@ public class LoginTests {
         driver.quit();
     }
 
-    @Test
+    @Test(enabled = false)
     public void LoginValidEmailEmptyPasswordTest () {
         WebDriver driver;
         driver = new ChromeDriver();
@@ -118,7 +106,7 @@ public class LoginTests {
         driver.quit();
     }
 
-    @Test
+    @Test(enabled = false)
     public void SwitchToSongsMenu () throws InterruptedException {
         WebDriver driver;
         driver = new ChromeDriver();
@@ -149,7 +137,7 @@ public class LoginTests {
         driver.quit();
     }
 
-    @Test
+    @Test(enabled = false)
     public void SearchSong () throws InterruptedException {
         WebDriver driver;
         driver = new ChromeDriver();
