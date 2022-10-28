@@ -10,6 +10,51 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest{
 
+    @Test(priority=1, description ="changing the username")
+    public void changeUsernameVerifyTheChange() {
+        provideEmail("trangoishi99@gmail.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
+        clickAvartarIcon();
+    }
+
+   // @Test(priority = 0)
+    public void LoginEmptyEmailPasswordTest ()  {
+             Assert.assertEquals(driver.getCurrentUrl(), url);
+             driver.quit();
+    }
+
+    @Test(enabled = false,priority = 1)
+    public void LoginValidEmailValidPasswordTest ()  {
+        provideEmail("trangoishi99@gmail.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
+
+        WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
+        //WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
+        Assert.assertTrue(avatarIcon.isDisplayed());
+
+        driver.quit();
+    }
+
+
+
+    @Test(enabled = false,priority = 2)
+    public void LoginInvalidEmailPasswordTest () throws InterruptedException {
+        provideEmail("dem@class.com");
+        providePassword("");
+        clickSubmitBtn();
+
+        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+        submitButton.click();
+
+        // Vd
+        Thread.sleep(2000);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+
+        driver.quit();
+    }
+
     private void providePassword(String pass) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
@@ -26,44 +71,6 @@ public class LoginTests extends BaseTest{
         clickBtn.click();
 
     }
-
-    @Test(priority = 0)
-    public void LoginEmptyEmailPasswordTest ()  {
-             Assert.assertEquals(driver.getCurrentUrl(), url);
-             driver.quit();
-    }
-
-    @Test(priority = 1)
-    public void LoginValidEmailValidPasswordTest ()  {
-        provideEmail("trangoishi99@gmail.com");
-        providePassword("te$t$tudent");
-        clickSubmitBtn();
-
-        WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
-        //WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
-        Assert.assertTrue(avatarIcon.isDisplayed());
-
-        driver.quit();
-    }
-
-
-
-    @Test(priority = 2)
-    public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-        provideEmail("dem@class.com");
-        providePassword("");
-        clickSubmitBtn();
-
-        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
-        submitButton.click();
-
-        // Vd
-        Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-
-        driver.quit();
-    }
-
     @Test(enabled = false)
     public void LoginValidEmailEmptyPasswordTest () {
 
