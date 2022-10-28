@@ -27,19 +27,20 @@ public class LoginTests extends BaseTest{
 
     }
 
-    @Test
+    @Test(priority = 0)
     public void LoginEmptyEmailPasswordTest ()  {
              Assert.assertEquals(driver.getCurrentUrl(), url);
              driver.quit();
     }
 
-    @Test
+    @Test(priority = 1)
     public void LoginValidEmailValidPasswordTest ()  {
-        provideEmail();
-        providePassword();
+        provideEmail("trangoishi99@gmail.com");
+        providePassword("te$t$tudent");
         clickSubmitBtn();
 
-        WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
+        WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
+        //WebElement avatarIcon = driver.findElement(By.cssSelector("[alt='Avatar of student']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
 
         driver.quit();
@@ -47,10 +48,10 @@ public class LoginTests extends BaseTest{
 
 
 
-    @Test
+    @Test(priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-        provideEmail();
-        providePassword();
+        provideEmail("dem@class.com");
+        providePassword("");
         clickSubmitBtn();
 
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
@@ -66,8 +67,8 @@ public class LoginTests extends BaseTest{
     @Test(enabled = false)
     public void LoginValidEmailEmptyPasswordTest () {
 
-        provideEmail();
-        providePassword();
+        provideEmail("demo@class.com");
+        providePassword("");
         clickSubmitBtn();
 
         driver.quit();
