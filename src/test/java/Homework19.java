@@ -18,7 +18,7 @@ public class Homework19 extends BaseTest {
         // Step3: Delete the playlist
         pressDeletePlaylist();
         // Step4: Validate that the playlist is deleted "Deleted playlist"
-        Assert.assertTrue(somethingToAssert);
+        Assert.assertEquals(getConfirmationPopupText(), "Deleted playlist");
     }
 
     private void selectPlaylist() throws InterruptedException {
@@ -32,6 +32,11 @@ public class Homework19 extends BaseTest {
         delPlaylist.click();
         Thread.sleep(4000);
     }
+
+    private String getConfirmationPopupText() {
+        return driver.findElement(By.cssSelector("div.success.show")).getText();
+    }
+
 
 
 
