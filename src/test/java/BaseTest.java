@@ -5,6 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
 import org.openqa.selenium.chromium.HasNetworkConditions;
 import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -13,6 +15,8 @@ public class BaseTest {
 
     WebDriver driver;
     String url;
+    WebDriverWait wait;
+
 
     @BeforeSuite
     public static void chromeConfigs() {
@@ -39,12 +43,17 @@ public class BaseTest {
         ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
         networkConditions.setDownloadThroughput(100 * 1024);
         networkConditions.setUploadThroughput(500 * 1024);
-        networkConditions.setLatency(Duration.ofMillis(5));
+        networkConditions.setLatency(Duration.ofMillis(5000));
         ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
         // (comment out above lines to remove throttling)
 
         // Wait for an element to show up for max of X seconds
+        // implicitlyWait(Duration.ofSeconds(60) will wait for UP to 60 seconds
+        // if element comes up after 1 second, it will move on
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        wait = new WebDriverWait(driver,Duration.ofSeconds(50));
+        // thread.sleep(60000) -- will wait 60s always
         url = baseURL;
         driver.get(url);
 
@@ -81,5 +90,11 @@ public class BaseTest {
                 {"d@class.com", ""},
                 {"", ""}
         };
+    }
+
+    public void logIn(){
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
     }
 }
