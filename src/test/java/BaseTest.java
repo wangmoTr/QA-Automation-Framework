@@ -28,20 +28,22 @@ public class BaseTest {
     }
     @AfterMethod
     public void tearDownBrowser() {
+        //Thread.sleep(2000);
         driver.quit();
+
     }
-    private void providePassword(String pass) {
+    public void providePassword(String pass) {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
         passwordField.sendKeys(pass);
     }
 
-    private void provideEmail(String email) {
+    public void provideEmail(String email) {
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
         emailField.sendKeys(email);
     }
-    private void clickSubmitBtn() {
+    public void clickSubmitBtn() {
         WebElement clickBtn = driver.findElement(By.cssSelector("[type='submit']"));
         clickBtn.click();
 

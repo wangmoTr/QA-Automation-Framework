@@ -10,15 +10,8 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest{
 
-    @Test(priority=1, description ="changing the username")
-    public void changeUsernameVerifyTheChange() {
-        provideEmail("trangoishi99@gmail.com");
-        providePassword("te$t$tudent");
-        clickSubmitBtn();
-        clickAvartarIcon();
-    }
 
-   // @Test(priority = 0)
+   @Test(priority = 0)
     public void LoginEmptyEmailPasswordTest ()  {
              Assert.assertEquals(driver.getCurrentUrl(), url);
              driver.quit();
@@ -55,22 +48,22 @@ public class LoginTests extends BaseTest{
         driver.quit();
     }
 
-    private void providePassword(String pass) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-        passwordField.click();
-        passwordField.sendKeys(pass);
-    }
-
-    private void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-        emailField.click();
-        emailField.sendKeys(email);
-    }
-    private void clickSubmitBtn() {
-        WebElement clickBtn = driver.findElement(By.cssSelector("[type='submit']"));
-        clickBtn.click();
-
-    }
+//    private void providePassword(String pass) {
+//        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+//        passwordField.click();
+//        passwordField.sendKeys(pass);
+//    }
+//
+//    private void provideEmail(String email) {
+//        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+//        emailField.click();
+//        emailField.sendKeys(email);
+//    }
+//    private void clickSubmitBtn() {
+//        WebElement clickBtn = driver.findElement(By.cssSelector("[type='submit']"));
+//        clickBtn.click();
+//
+//    }
     @Test(enabled = false)
     public void LoginValidEmailEmptyPasswordTest () {
 
