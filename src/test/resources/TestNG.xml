@@ -9,6 +9,7 @@
 <!--            <class name="BaseTest"/>-->
 <!--            <class name="RegistrationTests"/>-->
             <class name="ChangeUserName"/>
+            <class name="hw17_t"/>
 
         </classes>
     </test>
