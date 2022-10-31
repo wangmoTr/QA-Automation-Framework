@@ -17,7 +17,7 @@ public class LoginTests extends BaseTest{
              driver.quit();
     }
 
-    @Test(enabled = false,priority = 1)
+    @Test(priority = 1)
     public void LoginValidEmailValidPasswordTest ()  {
         provideEmail("trangoishi99@gmail.com");
         providePassword("te$t$tudent");
