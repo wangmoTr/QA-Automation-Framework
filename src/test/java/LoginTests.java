@@ -14,7 +14,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test(priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+    @Test(priority = 1, dataProvider = "invalidCredentials",dataProviderClass = BaseTest.class)
     public void LoginValidEmailValidPasswordTest (String email, String password) {
 
         provideEmail(email); // "demo@class.com"
@@ -23,13 +23,12 @@ public class LoginTests extends BaseTest {
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
         Assert.assertTrue(avatarIcon.isDisplayed());
-
     }
 
-    @Test(enabled = false, priority = 2)
-    public void LoginInvalidEmailPasswordTest () throws InterruptedException {
-        provideEmail("dem@class.com");
-        providePassword("");
+    @Test( priority = 2, dataProvider = "invalidCredentials")
+    public void LoginInvalidEmailPasswordTest (String email, String password) throws InterruptedException {
+        provideEmail(email);
+        providePassword(password);
         clickSubmitBtn();
 
         // Vd
