@@ -25,4 +25,18 @@ public class hw17_t extends BaseTest{
         driver.quit();
     }
 
+    //helpers
+    //go recently play
+    //all button xpaht //button[@class="btn-shuffle-all"]
+    //hover first song  xpath
+    //table[@class="item"]//tr[@class="song-item"]
+    ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item"]
+
+    ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item selected"]
+
+    //buton to add song  //button[@class="btn-add-to"]
+    //after button is drop down menu =---//section[@class="existing-playlists"]
+
+    //search tt playlist //section[@class="existing-playlists"]//li[contains(text(),"tt")]
+
 }
