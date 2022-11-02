@@ -20,7 +20,10 @@ public class hw17_t extends BaseTest{
         firstSongInPlaylist();
         addToButton();
         selectPlaylist();
-        //checkSelectedPlaylist();
+        checkSelectedPlaylist();
+        String songselected = songTitle();
+        String songInsideTheListtoBechecked= songTobeChecked();
+        Assert.assertEquals(songselected,songInsideTheListtoBechecked);
 
 //        WebElement allBtn = driver.findElement(By.xpath("//section[@id=\"recentlyPlayedWrapper\"]//button[@class=\"btn-shuffle-all\"]"));
 //        allBtn.click();
@@ -63,7 +66,10 @@ public class hw17_t extends BaseTest{
         WebElement songname = driver.findElement(By.xpath("//section[@id='recentlyPlayedWrapper']//tr[@class='song-item']//td[@class='title']"));
         return songname.getText();
     }
-
+    public String songTobeChecked(){
+        WebElement songInSideTheList = driver.findElement(By.xpath("//section[@id='playlistWrapper']//tr[@class='song-item']//td[@class='title']"));
+        return songInSideTheList.getText();
+    }
     ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item selected"]
     public void addToButton(){
         //buton to add song  //button[@class="btn-add-to"]
@@ -83,7 +89,7 @@ public class hw17_t extends BaseTest{
        //search tt playlist //section[@class="existing-playlists"]//li[contains(text(),"tt")]
 
        /////section[@class="existing-playlists"]
-       WebElement pickedPlaylist = driver.findElement(By.xpath("//li[contains(text(),\"tt\")]"));
+       WebElement pickedPlaylist = driver.findElement(By.xpath("//section[@id='recentlyPlayedWrapper']//li[contains(text(), 'tt')]"));
        pickedPlaylist.click();
    }
 
