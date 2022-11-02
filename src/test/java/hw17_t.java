@@ -20,23 +20,57 @@ public class hw17_t extends BaseTest{
         Assert.assertTrue(avatarIcon.isDisplayed());
 
         //select the all song
-        WebElement allsongs = driver.findElement(By.xpath("//a[@data-testid=\"view-profile-link\"]"));
-        allsongs.click();
-        driver.quit();
+        // WebElement allsongs = driver.findElement(By.xpath("//a[@data-testid=\"view-profile-link\"]"));
+        //allsongs.click();
+        recentPlaylist();
+        allPlaybtn();
+        firstSongInPlaylist();
+        addToButton();
+        dropDownMenuPlaylist();
+        selectPlaylist();
+    }
+
+    private void recentPlaylist() {
+         WebElement recentlist = driver.findElement(By.xpath("//section[@id=\"playlists\"]//a[@class='active']"));
+        recentlist.click();
     }
 
     //helpers
     //go recently play
-    //all button xpaht //button[@class="btn-shuffle-all"]
+
+    public void allPlaybtn() {
+        //all button xpaht //button[@class="btn-shuffle-all"]
+        WebElement allBtn = driver.findElement(By.xpath("//button[@class=\"btn-shuffle-all\"]"));
+        allBtn.click();
+    }
+
     //hover first song  xpath
-    //table[@class="item"]//tr[@class="song-item"]
-    ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item"]
+    public void firstSongInPlaylist() {
+        ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item"]
+        WebElement firstSong = driver.findElement(By.xpath("//section[@id=\"recentlyPlayedWrapper\"]tr[@class=\"songs-item\"]"));
+        firstSong.click();
+    }
+
 
     ////section[@id="recentlyPlayedWrapper"]tr[@class="songs-item selected"]
+    public void addToButton(){
+        //buton to add song  //button[@class="btn-add-to"]
+        WebElement addSongButton = driver.findElement(By.xpath("//button[@class=\"btn-add-to\"]"));
+        addSongButton.click();
+    }
 
-    //buton to add song  //button[@class="btn-add-to"]
-    //after button is drop down menu =---//section[@class="existing-playlists"]
+    //after button is drop down menu
+    public void dropDownMenuPlaylist() {
+        // =---//section[@class="existing-playlists"]
+        WebElement dropdown = driver.findElement(By.xpath("//section[@class=\"existing-playlists\"]"));
+        dropdown.click();
+    }
+   //search tt playlist
+   public void selectPlaylist() {
+       //search tt playlist //section[@class="existing-playlists"]//li[contains(text(),"tt")]
+       WebElement pickedPlaylist = driver.findElement(By.xpath("//section[@class=\"existing-playlists\"]"));
+       pickedPlaylist.click();
+   }
 
-    //search tt playlist //section[@class="existing-playlists"]//li[contains(text(),"tt")]
 
 }
