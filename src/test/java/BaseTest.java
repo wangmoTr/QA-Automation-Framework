@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
 import org.openqa.selenium.chromium.HasNetworkConditions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +17,7 @@ public class BaseTest {
     WebDriver driver;
     String url;
     WebDriverWait wait;
+    Actions actions;
 
 
     @BeforeSuite
@@ -38,13 +40,14 @@ public class BaseTest {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
         driver = new ChromeDriver();
+        actions = new Actions(driver);
         // Make webdriver load the pages REALLY slow
-        WebDriver augmentedDriver = new Augmenter().augment(driver);
-        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
-        networkConditions.setDownloadThroughput(100 * 1024);
-        networkConditions.setUploadThroughput(500 * 1024);
-        networkConditions.setLatency(Duration.ofMillis(5000));
-        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
+//        WebDriver augmentedDriver = new Augmenter().augment(driver);
+//        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
+//        networkConditions.setDownloadThroughput(100 * 1024);
+//        networkConditions.setUploadThroughput(500 * 1024);
+//        networkConditions.setLatency(Duration.ofMillis(5000));
+//        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
         // (comment out above lines to remove throttling)
 
         // Wait for an element to show up for max of X seconds
@@ -52,7 +55,7 @@ public class BaseTest {
         // if element comes up after 1 second, it will move on
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        wait = new WebDriverWait(driver,Duration.ofSeconds(50));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         // thread.sleep(60000) -- will wait 60s always
         url = baseURL;
         driver.get(url);
@@ -92,7 +95,7 @@ public class BaseTest {
         };
     }
 
-    public void logIn(){
+    public void login(){
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
