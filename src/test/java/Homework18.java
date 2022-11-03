@@ -26,6 +26,12 @@ public class Homework18 extends BaseTest {
         playPauseBtn.click();
 
     }
+    @Test
+    public void deletePlayList(){
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
+    }
 
 
 }
