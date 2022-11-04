@@ -1,3 +1,7 @@
+import POM.pages.AllSongsPage;
+import POM.pages.BasePage;
+import POM.pages.HomePage;
+import POM.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,6 +37,53 @@ public class LoginTests extends BaseTest {
         wait.until(ExpectedConditions.elementToBeClickable(playlistLocator));
         wait.until(ExpectedConditions.textToBePresentInElement(driver.findElement(playlistLocator), "PLAYLISTS"));
     }
+
+    // Test with POM
+    @Test
+    public void LoginValidEmailPasswordTest () {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+
+    }
+
+    // Test with POM for allpage
+    @Test
+    public void Shuffle(){
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        // Step1: Login
+        loginPage.login();
+        // Step2: Click on All Songs
+        homePage.clickOnAllSongs();
+        // Step3: Shuffle all songs
+        allSongsPage.shuffle();
+        Assert.assertTrue(homePage.isSongPlaying());
+
+    }
+
+    @Test
+    public void PlayASongFromAllSongs(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homey = new HomePage(driver);
+        AllSongsPage singysongy = new AllSongsPage(driver);
+
+        //Step1: Login
+        loginPage.login();
+        //Step2: Click on All Songs
+        homey.clickOnAllSongs();
+        //Step3: double click on first song
+        singysongy.doubleClickFirstSong();
+        //Step4: check if song is playing
+        Assert.assertTrue(homey.isSongPlaying());
+    }
+
 
     @Test(enabled = false, priority = 2)
     public void LoginInvalidEmailPasswordTest () throws InterruptedException {
