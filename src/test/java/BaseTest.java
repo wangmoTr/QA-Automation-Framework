@@ -42,12 +42,12 @@ public class BaseTest {
         driver = new ChromeDriver();
         actions = new Actions(driver);
         // Make webdriver load the pages REALLY slow
-//        WebDriver augmentedDriver = new Augmenter().augment(driver);
-//        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
-//        networkConditions.setDownloadThroughput(100 * 1024);
-//        networkConditions.setUploadThroughput(500 * 1024);
-//        networkConditions.setLatency(Duration.ofMillis(5000));
-//        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
+        WebDriver augmentedDriver = new Augmenter().augment(driver);
+        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
+        networkConditions.setDownloadThroughput(100 * 1024);
+        networkConditions.setUploadThroughput(500 * 1024);
+        networkConditions.setLatency(Duration.ofMillis(5000));
+        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
         // (comment out above lines to remove throttling)
 
         // Wait for an element to show up for max of X seconds
