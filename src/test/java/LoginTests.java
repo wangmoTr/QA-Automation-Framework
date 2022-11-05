@@ -56,14 +56,11 @@ public class LoginTests extends BaseTest {
     public void Shuffle(){
         AllSongsPage allSongsPage = new AllSongsPage(driver);
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
 
-        // Step1: Login
-        loginPage.login();
-        // Step2: Click on All Songs
-        homePage.clickOnAllSongs();
-        // Step3: Shuffle all songs
-        allSongsPage.shuffle();
+        HomePage homePage = loginPage.login();
+
+        homePage.clickOnAllSongs()
+                .shuffle();
         Assert.assertTrue(homePage.isSongPlaying());
 
     }
