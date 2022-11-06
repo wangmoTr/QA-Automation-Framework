@@ -14,11 +14,11 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test(priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
-    public void LoginValidEmailValidPasswordTest (String email, String password) {
+    @Test//(priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+    public void LoginValidEmailValidPasswordTest () {
 
-        provideEmail(email); // "demo@class.com"
-        providePassword(password); // te$t$tudent
+        provideEmail("demo@class.com"); // "demo@class.com"
+        providePassword("te$t$tudent"); // te$t$tudent
         clickSubmitBtn();
 
         WebElement avatarIcon = driver.findElement(By.xpath("//img[contains(@alt,'Avatar of')]"));
