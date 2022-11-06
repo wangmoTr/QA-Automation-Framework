@@ -33,7 +33,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    // Send a parameter for 'baseURL' specified in XML
+    // Send a parameter for 'baseURL' specified in XML ---
     @Parameters({"baseURL"})
     // Make baseURL parameter optional, if it is null, then set it to something)
     public void launchBrowser(@Optional String baseURL) {
