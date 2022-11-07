@@ -10,7 +10,6 @@
                     <include name="LoginValidEmailValidPasswordTest" />
                 </methods>
             </class>
-
         </classes>
     </test>
 </suite>
