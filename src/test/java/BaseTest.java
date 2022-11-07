@@ -38,7 +38,7 @@ public class BaseTest {
     // Make baseURL parameter optional, if it is null, then set it to something)
     public void launchBrowser(@Optional String baseURL) {
         if (baseURL == null)
-            baseURL ="https://bbb.testpro.io";
+            baseURL ="https://bbb.testpro.io/";
         driver = new ChromeDriver();
         actions = new Actions(driver);
         // Make webdriver load the pages REALLY slow
@@ -68,18 +68,23 @@ public class BaseTest {
     }
 
     public void clickSubmitBtn() {
-        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
+//        By submitButton = By.cssSelector("[type='submit']");
+        WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='submit']")));
+        //wait.until(ExpectedConditions.elementToBeClickable(submitButton));
         submitButton.click();
     }
 
     public void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
+        //By emailField = By.cssSelector("[type='email']");
+        WebElement emailField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='email']")));
         emailField.click();
         emailField.sendKeys(email);
     }
 
     public void providePassword(String password) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
+        //By passwordField  = By.cssSelector("[type='password']");
+        WebElement passwordField = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='password']")));
+       // wait.until(ExpectedConditions.elementToBeClickable(passwordField));
         passwordField.click();
         passwordField.sendKeys(password);
 
