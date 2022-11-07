@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -89,6 +90,13 @@ public class BaseTest {
         passwordField.sendKeys(password);
 
     }
+    public void checkAvatar() {
+        By avatarIconLocator = By.xpath("//img[contains(@alt,'Avatar of')]");
+
+        wait.until(ExpectedConditions.elementToBeClickable(avatarIconLocator));
+        WebElement avatarIcon = driver.findElement(avatarIconLocator);
+        Assert.assertTrue(avatarIcon.isDisplayed());
+    }
 
     @DataProvider(name="invalidCredentials")
     public static Object[][] getCredentials(){
@@ -104,5 +112,6 @@ public class BaseTest {
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
+        checkAvatar();
     }
 }
