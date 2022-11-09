@@ -92,18 +92,18 @@ public class playSong_WebElement extends BaseTest {
           //click on playlist 'super'
           choosePlaylistByName("super");
           //count number of songs
-          getListofSongs();
-          getListofSongs().size();
+          //getListofSongs();
+          //getListofSongs().size();
           //Integer listsize = getListofSongs().size();
-          Assert.assertEquals(getListofSongs().size(), 3);
+          //Assert.assertEquals(getListofSongs().size(), 3);
           //verify list of songs is three
            // WebElement listOfSongs = driver.findElement(By.cssSelector("#playlistWrapper td.title"));// only first element
           //Assert.assertEquals(getListOfSongs().size(),3);
   }
 
-    private String getListofSongs() {
-        List <WebElement> songList = driver.findElements(By.cssSelector("#playlistWrapper td.title"));
-    }
+//    private String getListofSongs() {
+//        List <WebElement> songList = driver.findElements(By.cssSelector("#playlistWrapper td.title"));
+//    }
 
     private void choosePlaylistByName(String name) {
        // By playlistLocator = By.xpath("//a[contains(text(), '" + name + "')]");
