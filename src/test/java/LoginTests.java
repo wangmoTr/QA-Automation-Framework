@@ -14,12 +14,35 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
 
-    @Test(enabled = false, priority = 0)
+    @Test
+    public void LoginValidEmailPasswordTest () {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+
+    }
+
+    @Test
     public void LoginEmptyEmailPasswordTest () {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.provideEmail("");
+        loginPage.providePassword("");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(loginPage.isPageOpened());
+
+    }
+
+    @Test(enabled = false, priority = 0)
+    public void OpenLoginPageTest () {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test (enabled=true, priority = 1)// (priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+    @Test (enabled=false, priority = 1)// (priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
     public void LoginValidEmailValidPasswordTest () {
 
         login();
@@ -38,18 +61,6 @@ public class LoginTests extends BaseTest {
         wait.until(ExpectedConditions.textToBePresentInElement(driver.findElement(playlistLocator), "PLAYLISTS"));
     }
 
-    // Test with POM
-    @Test
-    public void LoginValidEmailPasswordTest () {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-
-        loginPage.provideEmail("demo@class.com");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmitBtn();
-        Assert.assertTrue(homePage.isUserAvatarDisplayed());
-
-    }
 
     // Test with POM for allpage
     @Test(enabled = false)
