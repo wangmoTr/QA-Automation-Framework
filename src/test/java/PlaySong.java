@@ -60,7 +60,7 @@ public class PlaySong extends BaseTest{
         return play;
     }
 
-@Test
+@Test(enabled = false)
     public void listOfSongWebElements(){
         // I want to verify that the playlist 'super' has 3 songs
         // login
