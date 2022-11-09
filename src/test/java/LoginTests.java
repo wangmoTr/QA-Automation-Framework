@@ -52,20 +52,20 @@ public class LoginTests extends BaseTest {
     }
 
     // Test with POM for allpage
-    @Test
+    @Test(enabled = false)
     public void Shuffle(){
         AllSongsPage allSongsPage = new AllSongsPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
         HomePage homePage = loginPage.login();
 
-        homePage.clickOnAllSongs()
-                .shuffle();
+        //homePage.clickOnAllSongs()
+        //        .shuffle();
         Assert.assertTrue(homePage.isSongPlaying());
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void PlayASongFromAllSongs(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homey = new HomePage(driver);
