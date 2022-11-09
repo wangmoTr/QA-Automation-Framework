@@ -27,10 +27,10 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void LoginEmptyEmailPasswordTest () {
+    public void LoginEmptyPasswordTest () {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.provideEmail("");
+        loginPage.provideEmail("demo@class.com");
         loginPage.providePassword("");
         loginPage.clickSubmitBtn();
         Assert.assertTrue(loginPage.isPageOpened());
