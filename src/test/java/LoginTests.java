@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import t.pages.HomePage_t;
+import t.pages.LoginPage_t;
 
 import java.time.Duration;
 
@@ -38,16 +40,16 @@ public class LoginTests extends BaseTest {
         wait.until(ExpectedConditions.textToBePresentInElement(driver.findElement(playlistLocator), "PLAYLISTS"));
     }
 
-    // Test with POM
+    // Test with POM// test this one
     @Test
     public void LoginValidEmailPasswordTest () {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage_t loginPage = new LoginPage_t(driver);
+        //HomePage_t homePage = new HomePage_t(driver);
 
-        loginPage.provideEmail("demo@class.com");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmitBtn();
-        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+//        loginPage.provideEmail("demo@class.com");
+//        loginPage.providePassword("te$t$tudent");
+//        loginPage.clickSubmitBtn();
+//        Assert.assertTrue(homePage.isUserAvatarDisplayed());
 
     }
 
