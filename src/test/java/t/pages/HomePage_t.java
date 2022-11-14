@@ -19,11 +19,11 @@ public class HomePage_t extends BasePage_t {
        // driver = sentDriver;
         super(sentDriver);
     }
-    public WebElement getUserAvatar() {
-        return driver.findElement(avatarLocator);
-    }
-    public boolean isUserAvatarDisplayed() {
-        return driver.findElement(avatarLocator).isDisplayed();
-    }
+//    public WebElement getUserAvatar() {
+//        return driver.findElement(avatarLocator);
+//    }
+//    public boolean isUserAvatarDisplayed() {
+//        return driver.findElement(avatarLocator).isDisplayed();
+//    }
 
 }

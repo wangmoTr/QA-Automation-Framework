@@ -10,7 +10,8 @@ public class AllSongsPage_t extends BasePage_t {
 
     //Locators
     By shuffleBtnLocator = By.cssSelector(".btn-shuffle-all");
-    By firstSongLocator = By.cssSelector(".play");
+    //By firstSongLocator = By.cssSelector(".play");
+    By firstSongLocator = By.xpath("//section[@id=\"songsWrapper\"]//td[@class=\"title\"]");//By firstSongLocator = By.cssSelector(".play"););
 
     public AllSongsPage_t(WebDriver givenDriver) {
         super(givenDriver);

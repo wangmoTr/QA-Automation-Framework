@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import t.pages.AllSongsPage_t;
 import t.pages.HomePage_t;
 import t.pages.LoginPage_t;
 
@@ -21,7 +22,7 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
-    @Test (enabled=true, priority = 1)// (priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
+    @Test (enabled=false, priority = 1)// (priority = 1, dataProvider = "invalidCredentials", dataProviderClass = BaseTest.class)
     public void LoginValidEmailValidPasswordTest () {
 
         login();
@@ -42,9 +43,22 @@ public class LoginTests extends BaseTest {
 
     // Test with POM// test this one
     @Test
+    public void LoginValidEmailPasswordTestt () {
+        //WebDriver driver;
+        LoginPage_t loginPage= new LoginPage_t(driver);
+        HomePage_t homePage = new HomePage_t(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+
+    }
+    @Test
     public void LoginValidEmailPasswordTest () {
-        LoginPage_t loginPage = new LoginPage_t (driver);
-        HomePage_t homePage = new HomePage_t (driver);
+        //WebDriver driver;
+        LoginPage loginPage = new LoginPage (driver);
+        HomePage homePage = new HomePage(driver);
 
         loginPage.provideEmail("demo@class.com");
         loginPage.providePassword("te$t$tudent");
@@ -54,18 +68,32 @@ public class LoginTests extends BaseTest {
     }
 
     // Test with POM for allpage
-//    @Test
-//    public void Shuffle(){
-//        AllSongsPage allSongsPage = new AllSongsPage(driver);
-//        LoginPage loginPage = new LoginPage(driver);
-//
-//        HomePage homePage = loginPage.login();
-//
-//        homePage.clickOnAllSongs()
-//                .shuffle();
-//        Assert.assertTrue(homePage.isSongPlaying());
-//
-//    }
+    @Test
+    public void Shuffle(){
+        AllSongsPage allSongsPage = new AllSongsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        HomePage homePage = loginPage.login();
+
+        homePage.clickOnAllSongs()
+                .shuffle();
+        Assert.assertTrue(homePage.isSongPlaying());
+
+    }
+    @Test
+    public void Shufflet(){
+
+        AllSongsPage_t allSongsPage = new AllSongsPage_t(driver);
+        LoginPage_t loginPage = new LoginPage_t(driver);
+
+        HomePage_t homePage = loginPage.login();
+
+        homePage.clickOnAllSongs()
+                .shuffle();
+        Assert.assertTrue(homePage.isSongPlaying());
+
+    }
+
 
     @Test
     public void PlayASongFromAllSongs(){
@@ -80,7 +108,8 @@ public class LoginTests extends BaseTest {
         //Step3: double click on first song
         singysongy.doubleClickFirstSong();
         //Step4: check if song is playing
-        Assert.assertTrue(homey.isSongPlaying());
+        //Thread.sleep(3000);
+         //Assert.assertTrue(homey.isSongPlaying());
     }
 
 

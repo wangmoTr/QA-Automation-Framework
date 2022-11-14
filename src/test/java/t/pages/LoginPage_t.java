@@ -2,6 +2,7 @@ package t.pages;
 
 import POM.pages.BasePage;
 import POM.pages.HomePage;
+import POM.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage_t extends BasePage_t {
+public class LoginPage_t  {
     WebDriver driver;
     String url;
     WebDriverWait wait;
@@ -25,28 +26,31 @@ public class LoginPage_t extends BasePage_t {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
-    public void clickSubmitBtn() {
+    public LoginPage_t clickSubmitBtn() {
         driver.findElement(submitButtonLocator).click();
+        return this;
     }
-    public void provideEmail(String email) {
+    public LoginPage_t provideEmail(String email) {
         driver.findElement(emailField).sendKeys(email);
+        return this;
     }
 
-    public void providePassword( String password) {
+    public LoginPage_t providePassword( String password) {
         driver.findElement(passwordField).sendKeys(password);
+        return this;
     }
 
-//    public HomePage login(){
-//        provideEmail("demo@class.com")
-//                .providePassword("te$t$tudent")
-//                .clickSubmitBtn();
-//        return new HomePage(driver);
-//    }
-    public void login() {
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
-        clickSubmitBtn();
+    public HomePage_t login(){
+        provideEmail("demo@class.com")
+                .providePassword("te$t$tudent")
+                .clickSubmitBtn();
+        return new HomePage_t(driver);
     }
+//    public void login() {
+//        provideEmail("demo@class.com");
+//        providePassword("te$t$tudent");
+//        clickSubmitBtn();
+//    }
 
 
 
