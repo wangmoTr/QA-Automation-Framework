@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AllSongsPage_t extends BasePage {
+public class AllSongsPage_t extends BasePage_t {
 
     //Locators
     By shuffleBtnLocator = By.cssSelector(".btn-shuffle-all");

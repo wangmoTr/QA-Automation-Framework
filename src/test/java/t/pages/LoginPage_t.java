@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage_t extends BasePage {
+public class LoginPage_t extends BasePage_t {
     WebDriver driver;
     String url;
     WebDriverWait wait;
@@ -19,11 +19,22 @@ public class LoginPage_t extends BasePage {
     By emailField = By.cssSelector("[type='email']");
     By passwordField = By.cssSelector("[type='password']");
 
+     //passing the driver from our LoginTests page
     public LoginPage_t(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
+    public void clickSubmitBtn() {
+        driver.findElement(submitButtonLocator).click();
+    }
+    public void provideEmail(String email) {
+        driver.findElement(emailField).sendKeys(email);
+    }
+
+    public void providePassword( String password) {
+        driver.findElement(passwordField).sendKeys(password);
+    }
 
 //    public HomePage login(){
 //        provideEmail("demo@class.com")
@@ -31,6 +42,11 @@ public class LoginPage_t extends BasePage {
 //                .clickSubmitBtn();
 //        return new HomePage(driver);
 //    }
+    public void login() {
+        provideEmail("demo@class.com");
+        providePassword("te$t$tudent");
+        clickSubmitBtn();
+    }
 
 
 

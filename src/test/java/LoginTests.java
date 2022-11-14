@@ -43,29 +43,29 @@ public class LoginTests extends BaseTest {
     // Test with POM// test this one
     @Test
     public void LoginValidEmailPasswordTest () {
-        LoginPage_t loginPage = new LoginPage_t(driver);
-        //HomePage_t homePage = new HomePage_t(driver);
+        LoginPage_t loginPage = new LoginPage_t (driver);
+        HomePage_t homePage = new HomePage_t (driver);
 
-//        loginPage.provideEmail("demo@class.com");
-//        loginPage.providePassword("te$t$tudent");
-//        loginPage.clickSubmitBtn();
-//        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
 
     }
 
     // Test with POM for allpage
-    @Test
-    public void Shuffle(){
-        AllSongsPage allSongsPage = new AllSongsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
-
-        HomePage homePage = loginPage.login();
-
-        homePage.clickOnAllSongs()
-                .shuffle();
-        Assert.assertTrue(homePage.isSongPlaying());
-
-    }
+//    @Test
+//    public void Shuffle(){
+//        AllSongsPage allSongsPage = new AllSongsPage(driver);
+//        LoginPage loginPage = new LoginPage(driver);
+//
+//        HomePage homePage = loginPage.login();
+//
+//        homePage.clickOnAllSongs()
+//                .shuffle();
+//        Assert.assertTrue(homePage.isSongPlaying());
+//
+//    }
 
     @Test
     public void PlayASongFromAllSongs(){

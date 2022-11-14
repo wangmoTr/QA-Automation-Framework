@@ -15,15 +15,21 @@ public class BasePage_t {
     WebDriverWait wait;
     Actions actions;
 
-    By avatarLocator = By.cssSelector("img.avatar");
-    By soundBarPlayLocator = By.cssSelector("[data-testid = 'sound-bar-play']");
-    By allSongsMenuItemLocator = By.cssSelector("li a.songs");
+//    By avatarLocator = By.cssSelector("img.avatar");
+//    By soundBarPlayLocator = By.cssSelector("[data-testid = 'sound-bar-play']");
+//    By allSongsMenuItemLocator = By.cssSelector("li a.songs");
 
     public BasePage_t(WebDriver givenDriver){
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver);
-        PageFactory.initElements(driver,this);
+//        driver = givenDriver;
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//        actions = new Actions(driver);
+//        PageFactory.initElements(driver,this);
+    }
+
+    public BasePage_t() {
     }
 
     public WebElement getUserAvatar(){
