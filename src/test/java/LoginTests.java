@@ -17,8 +17,31 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
 
+    @Test
+    public void LoginValidEmailPasswordTest () {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+
+    }
+
+    @Test
+    public void LoginEmptyPasswordTest () {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(loginPage.isPageOpened());
+
+    }
+
     @Test(enabled = false, priority = 0)
-    public void LoginEmptyEmailPasswordTest () {
+    public void OpenLoginPageTest () {
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
@@ -54,29 +77,19 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
 
     }
-    @Test
-    public void LoginValidEmailPasswordTest () {
-        //WebDriver driver;
-        LoginPage loginPage = new LoginPage (driver);
-        HomePage homePage = new HomePage(driver);
+  
 
-        loginPage.provideEmail("demo@class.com");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmitBtn();
-        Assert.assertTrue(homePage.isUserAvatarDisplayed());
-
-    }
 
     // Test with POM for allpage
-    @Test
+    @Test(enabled = false)
     public void Shuffle(){
         AllSongsPage allSongsPage = new AllSongsPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
         HomePage homePage = loginPage.login();
 
-        homePage.clickOnAllSongs()
-                .shuffle();
+        //homePage.clickOnAllSongs()
+        //        .shuffle();
         Assert.assertTrue(homePage.isSongPlaying());
 
     }
@@ -95,7 +108,7 @@ public class LoginTests extends BaseTest {
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void PlayASongFromAllSongs(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homey = new HomePage(driver);
@@ -216,5 +229,19 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+    
+      @Test
+    public void LoginValidEmailPasswordTest () {
+        //WebDriver driver;
+        LoginPage loginPage = new LoginPage (driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmail("demo@class.com");
+        loginPage.providePassword("te$t$tudent");
+        loginPage.clickSubmitBtn();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+
+    }
+
 
 }
