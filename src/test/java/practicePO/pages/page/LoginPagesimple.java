@@ -3,7 +3,7 @@ package practicePO.pages.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage {
+public class LoginPagesimple extends BasePagesimple {
     public void fillEmail() {
         WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
         emailField.click();
@@ -15,10 +15,9 @@ public class LoginPage {
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
     }
-   public void submitBtn() {
+   public void clickSubmit() {
        WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
        submitButton.click();
-   }
    }
 
    }
