@@ -76,6 +76,8 @@ public class LoginTests extends BaseTest {
 
     }
 
+
+
     @Test(enabled = false)
     public void PlayASongFromAllSongs(){
         LoginPage loginPage = new LoginPage(driver);

@@ -2,15 +2,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chromium.ChromiumNetworkConditions;
-import org.openqa.selenium.chromium.HasNetworkConditions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
@@ -18,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Duration;
 
-public class BaseTest {
+public class BaseTest_grid {
 
     WebDriver driver;
     String url;
@@ -46,11 +42,11 @@ public class BaseTest {
     public void launchBrowser(@Optional String baseURL) throws MalformedURLException {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         System.setProperty("webdriver.gecko.driver", "geckodriver");
-        //driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
         //driver = new SafariDriver();
-        //driver = pickBrowser(System.getProperty("browser"));
+        driver = pickBrowser(System.getProperty("browser"));
         actions = new Actions(driver);
         // Make webdriver load the pages REALLY slow
 //        WebDriver augmentedDriver = new Augmenter().augment(driver);
