@@ -43,19 +43,11 @@ public class BaseTest_grid {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
         //driver = new ChromeDriver();
-        System.setProperty("webdriver.gecko.driver", "geckodriver");
-        driver = new FirefoxDriver();
+        //System.setProperty("webdriver.gecko.driver", "geckodriver");
+       // driver = new FirefoxDriver();
         //driver = new SafariDriver();
         driver = pickBrowser(System.getProperty("browser"));
         actions = new Actions(driver);
-        // Make webdriver load the pages REALLY slow
-//        WebDriver augmentedDriver = new Augmenter().augment(driver);
-//        ChromiumNetworkConditions networkConditions = new ChromiumNetworkConditions();
-//        networkConditions.setDownloadThroughput(100 * 1024);
-//        networkConditions.setUploadThroughput(500 * 1024);
-//        networkConditions.setLatency(Duration.ofMillis(5000));
-//        ((HasNetworkConditions) augmentedDriver).setNetworkConditions(networkConditions);
-        // (comment out above lines to remove throttling)
 
         // Wait for an element to show up for max of X seconds
         // implicitlyWait(Duration.ofSeconds(60) will wait for UP to 60 seconds
@@ -68,29 +60,20 @@ public class BaseTest_grid {
         driver.get(url);
 
     }
-
-    private WebDriver pickBrowser(String browser) throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        String gridURL = "http://192.168.1.2:4444";
-        switch (browser){
+  //use terminal to run gradle clean test -Dbrowser=safari
+    private WebDriver pickBrowser(String browser) {
+        switch (browser) {
             case "firefox":
-                System.setProperty("webdriver.gecko.driver", "geckodriver");
+                System.setProperty("webdriver.gecko.driver","geckodriver");
                 return driver = new FirefoxDriver();
-            case "safari":
+            case"safari":
                 return driver = new SafariDriver();
-            case "grid-safari":
-                caps.setCapability("browserName", "safari");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
-            case "grid-firefox":
-                caps.setCapability("browserName", "firefox");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
-            case "grid-chrome":
-                caps.setCapability("browserName", "chrome");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
             default:
                 return driver = new ChromeDriver();
+
         }
     }
+
 
     @AfterMethod
     public void tearDownBrowser() {
