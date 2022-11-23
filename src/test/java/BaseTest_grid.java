@@ -61,13 +61,24 @@ public class BaseTest_grid {
 
     }
   //use terminal to run gradle clean test -Dbrowser=safari
-    private WebDriver pickBrowser(String browser) {
+    private WebDriver pickBrowser(String browser) throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        String gridURL = "http://192.168.1.64:4444";
         switch (browser) {
             case "firefox":
                 System.setProperty("webdriver.gecko.driver","geckodriver");
                 return driver = new FirefoxDriver();
-            case"safari":
+            case "safari":
                 return driver = new SafariDriver();
+            case "grid-safari":
+                caps.setCapability("browserName", "safari");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "grid-firefox":
+                caps.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "grid-chrome":
+                caps.setCapability("browserName", "chrome");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
             default:
                 return driver = new ChromeDriver();
 
