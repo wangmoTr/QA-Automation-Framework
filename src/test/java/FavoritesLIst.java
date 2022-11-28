@@ -15,16 +15,21 @@ import java.time.Duration;
 
 public class FavoritesLIst extends BaseTestIntern {
     @Test
-    public void LoginValidEmailPasswordTest () {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+    public void addingFavoriteSong () {
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage = new HomePage(driver);
 
-        loginPage.provideEmail("demo@class.com");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmitBtn();
-        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+//        loginPage.provideEmail("trangoishi99@gmail.com");
+//        loginPage.providePassword("te$t$tudent");
+//        loginPage.clickSubmitBtn();
+//        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+          login();
+          WebElement AllSongsPage = driver.findElement(By.cssSelector(".songs"));
+          AllSongsPage.click();
 
+          WebElement favoringSong = driver.findElement(By.xpath("//section[@id='songsWrapper']//tr[@class='song-item']//td[@class='favorite']"));
+          favoringSong.click();
     }
-    
+
 
 }
