@@ -20,3 +20,10 @@ test {
         systemProperty "browser", System.getProperty("browser")
     }
 }
+
+//test {
+//    useTestNG() {
+//        suites "src/test/resources/TestNGparallel.xml"
+//        systemProperty "browser", System.getProperty("browser")
+//    }
+//}

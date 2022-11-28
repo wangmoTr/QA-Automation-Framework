@@ -16,10 +16,13 @@ import java.time.Duration;
 
 public class BaseTest_grid {
 
-    WebDriver driver;
-    String url;
-    WebDriverWait wait;
-    Actions actions;
+     WebDriver driver;
+      String url;
+       WebDriverWait wait;
+       Actions actions;
+
+     ThreadLocal<WebDriver> threadDriver;
+
 
 
 
@@ -39,26 +42,36 @@ public class BaseTest_grid {
     // Send a parameter for 'baseURL' specified in XML
     @Parameters({"baseURL"})
     // Make baseURL parameter optional, if it is null, then set it to something)
-    public void launchBrowser(@Optional String baseURL) throws MalformedURLException {
+    public  void launchBrowser(@Optional String baseURL) throws MalformedURLException {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
         //driver = new ChromeDriver();
         //System.setProperty("webdriver.gecko.driver", "geckodriver");
        // driver = new FirefoxDriver();
         //driver = new SafariDriver();
+
+
         driver = pickBrowser(System.getProperty("browser"));
-        actions = new Actions(driver);
+        //when we have driver
+        threadDriver  = new ThreadLocal<>();
+        threadDriver.set(driver);
+        actions = new Actions(getDriver());
 
         // Wait for an element to show up for max of X seconds
         // implicitlyWait(Duration.ofSeconds(60) will wait for UP to 60 seconds
         // if element comes up after 1 second, it will move on
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+       // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        //getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+       wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
         // thread.sleep(60000) -- will wait 60s always
         url = baseURL;
-        driver.get(url);
+        getDriver().get(url);
 
+    }
+
+    public static WebDriver getDriver() {
+        return threadDriver.get();
     }
   //use terminal to run gradle clean test -Dbrowser=safari
     private WebDriver pickBrowser(String browser) throws MalformedURLException {
@@ -88,9 +101,9 @@ public class BaseTest_grid {
 
     @AfterMethod
     public void tearDownBrowser() {
-        driver.quit();
+        getDriver().quit();
+        threadDriver.remove();
     }
-
     public void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
