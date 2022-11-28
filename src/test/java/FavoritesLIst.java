@@ -24,12 +24,27 @@ public class FavoritesLIst extends BaseTestIntern {
 //        loginPage.clickSubmitBtn();
 //        Assert.assertTrue(homePage.isUserAvatarDisplayed());
           login();
-          WebElement AllSongsPage = driver.findElement(By.cssSelector(".songs"));
-          AllSongsPage.click();
+          addingSongtoFavorites();
 
-          WebElement favoringSong = driver.findElement(By.xpath("//section[@id='songsWrapper']//tr[@class='song-item']//td[@class='favorite']"));
-          favoringSong.click();
+        checkFavoriteList();
+        getFavSongTitle();
+
+
     }
+   private String getFavSongTitle() {
+       WebElement superPlaylistSong = driver.findElement(By.xpath("//section[@id='playlistWrapper']//tr[@class='song-item']//td[@class='title']"));
+       return superPlaylistSong.getText();
+   }
+   private void addingSongtoFavorites() {
+       WebElement AllSongsPage = driver.findElement(By.cssSelector(".songs"));
+       AllSongsPage.click();
 
+       WebElement favoringSong = driver.findElement(By.xpath("//section[@id='songsWrapper']//tr[@class='song-item']//td[@class='favorite']"));
+       favoringSong.click();
+   }
+   private void checkFavoriteList() {
+       WebElement favList = driver.findElement(By.xpath("//a[@href='#!/favorites']"));
+       favList.click();
+   }
 
 }
