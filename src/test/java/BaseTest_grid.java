@@ -74,6 +74,24 @@ public class BaseTest_grid {
         return threadDriver.get();
     }
   //use terminal to run gradle clean test -Dbrowser=safari
+
+   public static WebDriver lambdaTest() throws MalformedURLException {
+        String username ='trangoishi';
+        String authkey ="";
+        String hub ="@hub.lambda-test.com/wd/hub";
+        DesiredCapabilities caps = new DesiredCapabilities();
+        //configure your capabilities here
+           caps.setCapability("platform", "window 10");
+           caps.setCapability("browserName", "Chrome");
+           caps.setCapability("version", "106.0");
+           caps.setCapability("resolution", "1024x768");
+           caps.setCapability("build", "window 10");
+           caps.setCapability("name",this.getClass().getName());
+           caps.setCapability("plugin", "git-testing");
+           return new RemoteWebDriver(new URL(spec:"https://" + username+ ":" + authkey + hub),cap);
+   }
+
+
     private WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         String gridURL = "http://192.168.1.64:4444";
@@ -92,6 +110,8 @@ public class BaseTest_grid {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
+            case "cloud":
+                return lambdaTest();
             default:
                 return driver = new ChromeDriver();
 
