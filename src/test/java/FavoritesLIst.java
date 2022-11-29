@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 
 public class FavoritesLIst extends BaseTestIntern {
@@ -51,15 +52,30 @@ public class FavoritesLIst extends BaseTestIntern {
     public void deleteFavSongList() {
         login();
        checkFavoriteList();
-       //WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper'']//i[@class='fa fa-heart text-maroon']"));
-       //i[@data-test='btn-like-liked']
-       WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
-       //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
-       actions.doubleClick(favList).perform();
-
-       //find the heart symbol and unclick
+//       //WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper'']//i[@class='fa fa-heart text-maroon']"));
+//       //i[@data-test='btn-like-liked']
+//       WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
+//       //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
+//       actions.doubleClick(favList).perform();
+//
+//       //find the heart symbol and unclick
        WebElement songPlay = driver.findElement(By.xpath("//div[@class='wrapper']//i[@class='fa fa-heart text-maroon']"));
        actions.doubleClick(songPlay).perform();
+
+//       WebElement songPlay = driver.findElement(By.xpath("//tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']"));
+//         actions.doubleClick(songPlay).perform();
+
+
+       //tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']
+
+//       List<WebElement> songLists = driver.findElement(By.xpath());
+//       for(WebElement item: songLists){
+//           actions.doubleClick(item).perform();
+//           boolean issSelected = item.getAttribute("class").contains();
+//           if(!issSelected) {
+//               return;
+//           }
+//       }
    }
 
 }
