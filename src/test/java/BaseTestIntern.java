@@ -92,7 +92,7 @@ public class BaseTestIntern {
     }
 
     public void login(){
-        provideEmail("demo@class.com");
+        provideEmail("trangoishi99@gmail.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
     }
