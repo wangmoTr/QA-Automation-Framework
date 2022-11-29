@@ -14,7 +14,7 @@ import java.time.Duration;
 
 
 public class FavoritesLIst extends BaseTestIntern {
-    @Test
+    //@Test
     public void addingFavoriteSong () {
 //        LoginPage loginPage = new LoginPage(driver);
 //        HomePage homePage = new HomePage(driver);
@@ -27,7 +27,7 @@ public class FavoritesLIst extends BaseTestIntern {
           addingSongtoFavorites();
 
         checkFavoriteList();
-        getFavSongTitle();
+        //getFavSongTitle();
 
 
     }
@@ -45,6 +45,21 @@ public class FavoritesLIst extends BaseTestIntern {
    private void checkFavoriteList() {
        WebElement favList = driver.findElement(By.xpath("//a[@href='#!/favorites']"));
        favList.click();
+   }
+
+   @Test
+    public void deleteFavSongList() {
+        login();
+       checkFavoriteList();
+       //WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper'']//i[@class='fa fa-heart text-maroon']"));
+       //i[@data-test='btn-like-liked']
+       WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
+       //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
+       actions.doubleClick(favList).perform();
+
+       //find the heart symbol and unclick
+       WebElement songPlay = driver.findElement(By.xpath("//div[@class='wrapper']//i[@class='fa fa-heart text-maroon']"));
+       actions.doubleClick(songPlay).perform();
    }
 
 }
