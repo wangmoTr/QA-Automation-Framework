@@ -15,7 +15,7 @@ import java.util.List;
 
 
 public class FavoritesLIst extends BaseTestIntern {
-    //@Test
+    @Test
     public void addingFavoriteSong () {
 //        LoginPage loginPage = new LoginPage(driver);
 //        HomePage homePage = new HomePage(driver);
@@ -54,16 +54,16 @@ public class FavoritesLIst extends BaseTestIntern {
        checkFavoriteList();
 //       //WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper'']//i[@class='fa fa-heart text-maroon']"));
 //       //i[@data-test='btn-like-liked']
-//       WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
-//       //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
-//       actions.doubleClick(favList).perform();
+       WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
+       //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
+       actions.doubleClick(favList).perform();
 //
 //       //find the heart symbol and unclick
-       WebElement songPlay = driver.findElement(By.xpath("//div[@class='wrapper']//i[@class='fa fa-heart text-maroon']"));
-       actions.doubleClick(songPlay).perform();
+//       WebElement songPlay = driver.findElement(By.xpath("//div[@class='wrapper']//i[@class='fa fa-heart text-maroon']"));
+//       actions.doubleClick(songPlay).perform();
 
-//       WebElement songPlay = driver.findElement(By.xpath("//tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']"));
-//         actions.doubleClick(songPlay).perform();
+       WebElement songPlay = driver.findElement(By.xpath("//tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']"));
+         actions.doubleClick(songPlay).perform();
 
 
        //tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']
@@ -75,7 +75,13 @@ public class FavoritesLIst extends BaseTestIntern {
 //           if(!issSelected) {
 //               return;
 //           }
+//
 //       }
+
+    }
+    @Test
+   public void emptyFavList() {
+        login();
    }
 
 }
