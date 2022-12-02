@@ -65,23 +65,12 @@ public class FavoritesLIst extends BaseTestIntern {
        WebElement songPlay = driver.findElement(By.xpath("//tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']"));
          actions.doubleClick(songPlay).perform();
 
-
-       //tr[@class='song-item selected']//td[@class='favorite']//i[@data-test='btn-like-unliked']
-
-//       List<WebElement> songLists = driver.findElement(By.xpath());
-//       for(WebElement item: songLists){
-//           actions.doubleClick(item).perform();
-//           boolean issSelected = item.getAttribute("class").contains();
-//           if(!issSelected) {
-//               return;
-//           }
-//
-//       }
-
     }
     @Test
    public void emptyFavList() {
         login();
+        checkFavoriteList();
+       // WebElement textStatusofEmptyList = driver.findElement(By.xpath("//a"))
    }
 
 }
