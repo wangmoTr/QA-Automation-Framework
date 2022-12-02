@@ -12,7 +12,10 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
+
+import static com.sun.tools.doclint.Entity.cap;
 
 public class BaseTest_grid {
 
@@ -21,7 +24,7 @@ public class BaseTest_grid {
        WebDriverWait wait;
        Actions actions;
 
-     ThreadLocal<WebDriver> threadDriver;
+     //ThreadLocal<WebDriver> threadDriver;
 
 
 
@@ -53,44 +56,48 @@ public class BaseTest_grid {
 
         driver = pickBrowser(System.getProperty("browser"));
         //when we have driver
-        threadDriver  = new ThreadLocal<>();
-        threadDriver.set(driver);
-        actions = new Actions(getDriver());
+//        threadDriver  = new ThreadLocal<>();
+//        threadDriver.set(driver);
+//        actions = new Actions(getDriver());
+        actions= new Actions(driver);
 
         // Wait for an element to show up for max of X seconds
         // implicitlyWait(Duration.ofSeconds(60) will wait for UP to 60 seconds
         // if element comes up after 1 second, it will move on
        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        //getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-       wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+       //driver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+      // wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
         // thread.sleep(60000) -- will wait 60s always
         url = baseURL;
-        getDriver().get(url);
-
+        //getDriver().get(url);
+         driver.get(url);
     }
 
-    public static WebDriver getDriver() {
-        return threadDriver.get();
-    }
+//    public static WebDriver getDriver() {
+//        return threadDriver.get();
+//    }
   //use terminal to run gradle clean test -Dbrowser=safari
 
-   public static WebDriver lambdaTest() throws MalformedURLException {
-        String username ='trangoishi';
-        String authkey ="";
-        String hub ="@hub.lambda-test.com/wd/hub";
-        DesiredCapabilities caps = new DesiredCapabilities();
-        //configure your capabilities here
-           caps.setCapability("platform", "window 10");
-           caps.setCapability("browserName", "Chrome");
-           caps.setCapability("version", "106.0");
-           caps.setCapability("resolution", "1024x768");
-           caps.setCapability("build", "window 10");
-           caps.setCapability("name",this.getClass().getName());
-           caps.setCapability("plugin", "git-testing");
-           return new RemoteWebDriver(new URL(spec:"https://" + username+ ":" + authkey + hub),cap);
-   }
+    public static WebDriver lambdaTest() MalformedURLException{
 
+
+        String username = "trangoishi99";
+        String accessKey = "";
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("browserName", "Chrome");
+            capabilities.setCapability("version", "92.0");
+            capabilities.setCapability("platform", "Windows 10");
+            capabilities.setCapability("resolution","1024x768");
+            capabilities.setCapability("build", "First Test");
+            capabilities.setCapability("name", "Sample Test");
+            capabilities.setCapability("network", true); // To enable network logs
+            capabilities.setCapability("visual", true); // To enable step by step screenshot
+            capabilities.setCapability("video", true); // To enable video recording
+            capabilities.setCapability("console", true); // To capture console logs
+
+            return  new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub"), capabilities);
+    }
 
     private WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -121,8 +128,9 @@ public class BaseTest_grid {
 
     @AfterMethod
     public void tearDownBrowser() {
-        getDriver().quit();
-        threadDriver.remove();
+//        getDriver().quit();
+//        threadDriver.remove();
+        driver.quit();
     }
     public void clickSubmitBtn() {
         WebElement submitButton = driver.findElement(By.cssSelector("[type='submit']"));
