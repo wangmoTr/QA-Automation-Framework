@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="smokeSuite">
 
-    <test name="Example Test" preserve-order="false">
+<suite name="SmokeSuite">
+
+    <test name="Smoke Test" preserve-order="false">
         <classes>
             <class name="LoginTests">
-                   <methods>
-                       <include name="LoginValidEmailValidPasswordTest"/>
-                   </methods>
+                <methods>
+                    <include name="LoginValidEmailValidPasswordTest" />
+                </methods>
             </class>
         </classes>
     </test>
+
 </suite>
 
-        <!--            <class name="BaseTest"/>-->
-        <!--            <class name="RegistrationTests"/>-->
-        <!--            <class name="ChangeUserName"/>-->
-        <!--            <class name="hw17_t"/>-->
