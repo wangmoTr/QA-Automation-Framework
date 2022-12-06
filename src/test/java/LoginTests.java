@@ -49,7 +49,7 @@ public class LoginTests extends BaseTest {
         // driver.findelement(how to find the element)
         // |
         // var = how to find element
-        // driver.findelement(var)
+
 
         By avatarIconLocator = By.xpath("//img[contains(@alt,'Avatar of')]");
         By playlistLocator = By.cssSelector("#playlists h1");
