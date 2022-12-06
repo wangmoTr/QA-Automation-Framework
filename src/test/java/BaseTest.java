@@ -2,7 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.chromium.ChromiumNetworkConditions;
 import org.openqa.selenium.chromium.HasNetworkConditions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,12 +16,6 @@ import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.time.Duration;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-
-
 import java.time.Duration;
 
 public class BaseTest {
@@ -53,11 +46,11 @@ public class BaseTest {
     public void launchBrowser(@Optional String baseURL) throws MalformedURLException {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
-        driver = new ChromeDriver();
+        //driver = new ChromeDriver();
         System.setProperty("webdriver.gecko.driver", "geckodriver");
         //driver = new FirefoxDriver();
         //driver = new SafariDriver();
-        //driver = pickBrowser(System.getProperty("browser"));
+        driver = pickBrowser(System.getProperty("browser"));
         actions = new Actions(driver);
         // Make webdriver load the pages REALLY slow
 //        WebDriver augmentedDriver = new Augmenter().augment(driver);
@@ -102,36 +95,6 @@ public class BaseTest {
                 return driver = new ChromeDriver();
         }
     }
-    WebDriver driver;
-    String url;
-    @BeforeMethod
-    public void launchBrowser() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        url = "https://bbb.testpro.io/";
-        driver.get(url);
-    }
-    @AfterMethod
-    public void tearDownBrowser() {
-        //Thread.sleep(2000);
-        driver.quit();
-
-    }
-    public void providePassword(String pass) {
-        WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
-        passwordField.click();
-        passwordField.sendKeys(pass);
-    }
-
-    public void provideEmail(String email) {
-        WebElement emailField = driver.findElement(By.cssSelector("[type='email']"));
-        emailField.click();
-        emailField.sendKeys(email);
-    }
-    public void clickSubmitBtn() {
-        WebElement clickBtn = driver.findElement(By.cssSelector("[type='submit']"));
-        clickBtn.click();
-
 
     @AfterMethod
     public void tearDownBrowser() {
@@ -170,6 +133,5 @@ public class BaseTest {
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
-
     }
 }

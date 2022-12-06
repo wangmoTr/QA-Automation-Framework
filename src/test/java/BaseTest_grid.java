@@ -15,7 +15,7 @@ import java.net.URI;
 import java.net.URL;
 import java.time.Duration;
 
-import static com.sun.tools.doclint.Entity.cap;
+//import static com.sun.tools.doclint.Entity.cap;
 
 public class BaseTest_grid {
 
@@ -79,25 +79,25 @@ public class BaseTest_grid {
 //    }
   //use terminal to run gradle clean test -Dbrowser=safari
 
-    public static WebDriver lambdaTest() MalformedURLException{
-
-
-        String username = "trangoishi99";
-        String accessKey = "";
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("browserName", "Chrome");
-            capabilities.setCapability("version", "92.0");
-            capabilities.setCapability("platform", "Windows 10");
-            capabilities.setCapability("resolution","1024x768");
-            capabilities.setCapability("build", "First Test");
-            capabilities.setCapability("name", "Sample Test");
-            capabilities.setCapability("network", true); // To enable network logs
-            capabilities.setCapability("visual", true); // To enable step by step screenshot
-            capabilities.setCapability("video", true); // To enable video recording
-            capabilities.setCapability("console", true); // To capture console logs
-
-            return  new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub"), capabilities);
-    }
+//    public static WebDriver lambdaTest() MalformedURLException{
+//
+//
+//        String username = "trangoishi99";
+//        String accessKey = "";
+//            DesiredCapabilities capabilities = new DesiredCapabilities();
+//            capabilities.setCapability("browserName", "Chrome");
+//            capabilities.setCapability("version", "92.0");
+//            capabilities.setCapability("platform", "Windows 10");
+//            capabilities.setCapability("resolution","1024x768");
+//            capabilities.setCapability("build", "First Test");
+//            capabilities.setCapability("name", "Sample Test");
+//            capabilities.setCapability("network", true); // To enable network logs
+//            capabilities.setCapability("visual", true); // To enable step by step screenshot
+//            capabilities.setCapability("video", true); // To enable video recording
+//            capabilities.setCapability("console", true); // To capture console logs
+//
+//            return  new RemoteWebDriver(new URL("https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub"), capabilities);
+//    }
 
     private WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -117,8 +117,8 @@ public class BaseTest_grid {
             case "grid-chrome":
                 caps.setCapability("browserName", "chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(),caps);
-            case "cloud":
-                return lambdaTest();
+//            case "cloud":
+//                return lambdaTest();
             default:
                 return driver = new ChromeDriver();
 
