@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG" parallel ="methods" thread-count="2">
+<suite name="TestNG">
 
-    <test name="LoginTests" preserve-order="false">
+    <test name="Example Test" preserve-order="false">
         <classes>
-
             <class name="LoginTests">
             <methods>
                 <include name="LoginValidEmailValidPasswordTest"/>
@@ -15,3 +14,8 @@
     </test>
 </suite>
 
+        <!--            <class name="LoginTests"/>-->
+        <!--            <class name="BaseTest"/>-->
+        <!--            <class name="RegistrationTests"/>-->
+        <!--            <class name="ChangeUserName"/>-->
+<!--<class name="hw17_t"/>-->
