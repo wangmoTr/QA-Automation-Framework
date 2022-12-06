@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
+<suite name="TestNG" parallel ="methods" thread-count="2">
 
-    <test name="Example Test" preserve-order="false">
+    <test name="LoginTests" preserve-order="false">
         <classes>
-            <class name="Homework17">
-                <methods>
-                    <include name="addSongToPlaylist" />
-                </methods>
-            </class>
+
+            <class name="LoginTests">
+            <methods>
+                <include name="LoginValidEmailValidPasswordTest"/>
+            </methods>
+        </class>
         </classes>
     </test>
 </suite>
 
-<!--<class name="RegistrationTests"/>-->
-<!--<class name="ChangeUsernameTests"/>-->

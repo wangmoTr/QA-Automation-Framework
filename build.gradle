@@ -17,11 +17,16 @@ dependencies {
 test {
     useTestNG() {
         suites "src/test/resources/TestNG.xml"
+        systemProperty "browser", System.getProperty("browser")
+
+        //suites "src/test/resources/hw17.xml"
+
     }
 }
 
-task testHW18(type: Test) {
-    useTestNG() {
-        suites "src/test/resources/Homework18.xml"
-    }
-}
+//test {
+//    useTestNG() {
+//        suites "src/test/resources/TestNGparallel.xml"
+//        systemProperty "browser", System.getProperty("browser")
+//    }
+//}
