@@ -47,7 +47,7 @@ public class BaseTest {
         if (baseURL == null)
             baseURL ="https://bbb.testpro.io";
         //driver = new ChromeDriver();
-        System.setProperty("webdriver.gecko.driver", "geckodriver");
+        //System.setProperty("webdriver.gecko.driver", "geckodriver");
         //driver = new FirefoxDriver();
         //driver = new SafariDriver();
         driver = pickBrowser(System.getProperty("browser"));
