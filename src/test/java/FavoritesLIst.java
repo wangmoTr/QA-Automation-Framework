@@ -23,11 +23,8 @@ public class FavoritesLIst extends BaseTestIntern {
 
         login();
         addingSongtoFavorites();
-
         checkFavoriteList();
-        //getFavSongTitle();
-
-
+        Assert.assertEquals(getFavSongTitle(),"HoliznaCCO");
     }
 
     private String getFavSongTitle() {
@@ -63,16 +60,18 @@ public class FavoritesLIst extends BaseTestIntern {
     public void emptyFavList() {
         login();
         checkFavoriteList();
-
-        String message = noFavorites();
-        
-        Assert.assertEquals(message, "No favorites yet.");
+       Assert.assertEquals(noFavorites(),true);
     }
 
-    private String noFavorites() {
-        WebElement textStatusofEmptyList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//div[@class='text']"));
-        return textStatusofEmptyList.getText();
+    private boolean noFavorites() {
+        WebElement textStatusofEmptyList = driver.findElement(By.xpath("//div[contains(text(),'No favorites yet.']"));
+        return textStatusofEmptyList.isDisplayed();
     }
+//    public void contextClickFirstSong() {
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
+//        WebElement firstSong = driver.findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
+//        actions.contextClick(firstSong).perform();
+//    }
 
 }
 
