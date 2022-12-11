@@ -24,7 +24,6 @@ public class FavoritesLIst extends BaseTestIntern {
         login();
         addingSongtoFavorites();
         checkFavoriteList();
-        //Assert.assertEquals(getFavSongTitle(),"HoliznaCCO");
     }
 
     private String getFavSongTitle() {
@@ -49,30 +48,30 @@ public class FavoritesLIst extends BaseTestIntern {
     public void deleteFavSongList() {
         login();
         checkFavoriteList();
+        deleteAllSongs();
+
+    }
+    private void deleteAllSongs() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']")));
         WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
-        //WebElement favList = driver.findElement(By.xpath("//i[@data-test='btn-like-liked']"));
-        actions.sendKeys(Keys.DELETE);
-
-
+        actions.sendKeys(Keys.chord(Keys.CONTROL, Keys.DELETE));
     }
 
     @Test(enabled = true)
     public void emptyFavList() {
         login();
         checkFavoriteList();
-       Assert.assertEquals(noFavorites(),true);
+        WebElement song= driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
+        song.sendKeys(Keys.DELETE);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#favoritesWrapper div.text")));
+        WebElement textMessage = driver.findElement(By.cssSelector("#favoritesWrapper div.text"));
+        textMessage.isDisplayed();
     }
 
     private boolean noFavorites() {
-        WebElement textStatusofEmptyList = driver.findElement(By.xpath("//div[contains(text(),'No favorites yet.']"));
+        WebElement textStatusofEmptyList = driver.findElement(By.xpath("//div[contains(text(),'No favorites']"));
         return textStatusofEmptyList.isDisplayed();
     }
-//    public void contextClickFirstSong() {
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".all-songs tr.song-item:nth-child(1)")));
-//        WebElement firstSong = driver.findElement(By.cssSelector(".all-songs tr.song-item:nth-child(1)"));
-//        actions.contextClick(firstSong).perform();
-//    }
-
 }
 
 
