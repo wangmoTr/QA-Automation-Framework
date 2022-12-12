@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,19 +25,25 @@ public class FavLIst extends BaseTestIntern {
         loginPageIntern.login();
         // first go to all songs
         favoritesList.allSongMenu();
-        //favoritesList.deleteAllFavSongs();
-        //addSongtoFavorites();
-        //String selectedSongTitle = getSongText();
-        //checkFavoriteList();
-        //String  favSong = checkSongInFavList();
+        // add song name
+//        List<String> listSongToAdd=new ArrayList<String>();
+//
 
-        //Assert.assertEquals(favSong,selectedSongTitle);
+        String song = "Reactor";
+       //for (String song:listSongToAdd)
 
-        //click on the song to add to Favoritesfa
-        //get the text of the songs
-        //add song to favorites
-        //go to favorites
-        //check if the song is there
+       WebElement el = driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='" + song+ "']"));
+       el.click();
+       actions.contextClick(el).perform();
+        WebElement addToBtn = driver.findElement(By.cssSelector(".song-menu .has-sub"));
+        addToBtn.click();
+
+        //.song-menu .has-sub .favorite
+        WebElement addToFavBtn = driver.findElement(By.cssSelector(".song-menu .has-sub .favorite"));
+        addToFavBtn.click();
+        ////section[@id='favoritesWrapper']//td[text()='Reactor']
+        WebElement favSongInList = driver.findElement(By.xpath("//*[@id='favoritesWrapper']//td[text()='" + song+ "']"));
+        favSongInList.isDisplayed();
     }
    @Test(enabled =true)
    public void deleteFavoritesSong() {
