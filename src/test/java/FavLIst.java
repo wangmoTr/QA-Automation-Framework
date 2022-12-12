@@ -15,7 +15,6 @@ public class FavLIst extends BaseTestIntern {
 
         LoginPageIntern loginPageIntern = new LoginPageIntern(driver);
         FavoritePageIntern favoritesList= new FavoritePageIntern(driver);
-        //BasePage basePage = new BasePage(driver);
         HomePageIntern homePage = new HomePageIntern(driver);
 
         //login();
@@ -23,13 +22,12 @@ public class FavLIst extends BaseTestIntern {
         // first go to all songs
         favoritesList.allSongMenu();
         //favoritesList.deleteAllFavSongs();
-        favoritesList.addSongtoFavorites();
-        String selectedSongTitle;
-                selectedSongTitle= favoritesList.getSongText();
-        checkFavoriteList();
-        String  favSong = favoritesList.checkSongInFavList();
+        //addSongtoFavorites();
+        //String selectedSongTitle = getSongText();
+        //checkFavoriteList();
+        //String  favSong = checkSongInFavList();
 
-        Assert.assertEquals(favSong,selectedSongTitle);
+        //Assert.assertEquals(favSong,selectedSongTitle);
 
         //click on the song to add to Favoritesfa
         //get the text of the songs
@@ -50,7 +48,7 @@ public class FavLIst extends BaseTestIntern {
 
 
    }
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void emptySong() {
         LoginPageIntern loginPageIntern = new LoginPageIntern(driver);
         FavoritePageIntern favoritesList= new FavoritePageIntern(driver);
@@ -65,15 +63,28 @@ public class FavLIst extends BaseTestIntern {
         textMessage.isDisplayed();
     }
 
-    private void addingSongtoFavorites() {
-        WebElement AllSongsPage = driver.findElement(By.cssSelector(".songs"));
-        AllSongsPage.click();
-    }
+
     private void checkFavoriteList() {
         WebElement favList = driver.findElement(By.xpath("//a[@href='#!/favorites']"));
         favList.click();
     }
+    @Test(enabled = true)
+    public void downloadSong() {
+        LoginPageIntern loginPageIntern = new LoginPageIntern(driver);
+        HomePageIntern homePage = new HomePageIntern(driver);
+        FavoritePageIntern favoritesList= new FavoritePageIntern(driver);
+        loginPageIntern.login();
+        favoritesList.allSongMenu();
+        String songName = "Episode 2";
 
+        WebElement songtoSelect = driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='Episode 2']"));
+        //WebElement songtoSelect = driver.findElement(By.xpath(songName));
+        songtoSelect.click();
+        actions.contextClick(songtoSelect).perform();
+
+        WebElement favList = driver.findElement(By.xpath("//li[@class='download']"));
+        favList.click();
+    }
 }
 
 

@@ -53,23 +53,23 @@ public class BasePageIntern {
         return new FavoritePageIntern(driver);
     }
 
-    public void addSongtoFavorites() {
-        driver.findElement(addButton).click();
-        driver.findElement(favoritesBtn).click();
-
-    }
-    public void getSongLocator() {
-       driver.findElement(songToBeSelectFromAllSongs);
-        return this;
-    }
-    public String getSongText() {
-        driver.findElement(songToBeSelectFromAllSongs).getText();
-        return this;
-    }
-
-    public String checkSongInFavList() {
-        driver.findElement(favSonginFavList).getText();
-        return this;
-    }
+//    public void addSongtoFavorites() {
+//        driver.findElement(addButton).click();
+//        driver.findElement(favoritesBtn).click();
+//
+//    }
+//    public void getSongLocator() {
+//       driver.findElement(songToBeSelectFromAllSongs);
+//        return this;
+//    }
+//    public String getSongText() {
+//        driver.findElement(songToBeSelectFromAllSongs).getText();
+//        return this;
+//    }
+//
+//    public String checkSongInFavList() {
+//        driver.findElement(favSonginFavList).getText();
+//        return this;
+//    }
 }
 
