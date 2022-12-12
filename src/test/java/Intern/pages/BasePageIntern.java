@@ -27,7 +27,7 @@ public class BasePageIntern {
     By addButton = By.cssSelector((".btn-add-to"));
 
     By favoritesBtn = By.xpath("//*[@id='songsWrapper']//li[@class='favorites']");
-//
+    //
     By favSonginFavList = By.xpath("//section[@id='playlistWrapper']//tr[@class='song-item']//td[@class='title']");
 
     By nosSongOnFavList = By.cssSelector("#favoritesWrapper div.text");
@@ -72,4 +72,3 @@ public class BasePageIntern {
 //        return this;
 //    }
 }
-

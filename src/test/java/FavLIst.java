@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FavLIst extends BaseTestIntern {
+public class FavLIst extends BaseTestIntern{
     @Test(enabled = true)
     public void addingFavoriteSong() {
 
