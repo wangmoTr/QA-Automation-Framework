@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.util.List;
 
 
 public class FavLIst extends BaseTestIntern {
@@ -45,22 +46,26 @@ public class FavLIst extends BaseTestIntern {
        //login();
        loginPageIntern.login();
        checkFavoriteList();
-
-
+       deleteAllSongs();
+       Assert.assertEquals(isSongRemoved(),true);
    }
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void emptySong() {
         LoginPageIntern loginPageIntern = new LoginPageIntern(driver);
         FavoritePageIntern favoritesList= new FavoritePageIntern(driver);
         //BasePage basePage = new BasePage(driver);
         HomePageIntern homePage = new HomePageIntern(driver);
-
-        //login();
         loginPageIntern.login();
         checkFavoriteList();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#favoritesWrapper div.text")));
-        WebElement textMessage = driver.findElement(By.cssSelector("#favoritesWrapper div.text"));
-        textMessage.isDisplayed();
+        deleteAllSongs();
+        Assert.assertEquals(isSongRemoved(),true);
+        //noFavorites();
+
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#favoritesWrapper div.text")));
+//        WebElement textMessage = driver.findElement(By.cssSelector("#favoritesWrapper div.text"));
+//        textMessage.isDisplayed();
+        //to check if there is empty
+
     }
 
 
@@ -84,6 +89,23 @@ public class FavLIst extends BaseTestIntern {
 
         WebElement favList = driver.findElement(By.xpath("//li[@class='download']"));
         favList.click();
+    }
+    private void deleteAllSongs() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']")));
+        WebElement favList = driver.findElement(By.xpath("//section[@id='favoritesWrapper']//td[@class='title']"));
+        actions.sendKeys(Keys.chord(Keys.CONTROL, Keys.DELETE));
+    }
+
+    private List <WebElement> favSongs(){
+        return driver.findElements(By.cssSelector("#favoritesrapper .song-items"));
+    }
+
+    public boolean isSongRemoved(){
+        return favSongs().size()==0;
+    }
+    private boolean noFavorites() {
+        WebElement textStatusofEmptyList = driver.findElement(By.xpath("//div[contains(text(),'No favorites']"));
+        return textStatusofEmptyList.isDisplayed();
     }
 }
 
