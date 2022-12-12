@@ -1,20 +1,8 @@
-import POM.pages.AllSongsPage;
-import POM.pages.BasePage;
-import POM.pages.HomePage;
-import POM.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class FavoritesLIst extends BaseTestIntern {
