@@ -17,6 +17,8 @@ public class BasePageSearch {
     By avatarLocator = By.cssSelector("img.avatar");
     By soundBarPlayLocator = By.cssSelector("[data-testid = 'sound-bar-play']");
     By allSongsMenuItemLocator = By.cssSelector("li a.songs");
+    //search locator
+
 
     public BasePageSearch(WebDriver givenDriver){
         driver = givenDriver;
@@ -33,15 +35,16 @@ public class BasePageSearch {
         return driver.findElement(avatarLocator).isDisplayed();
     }
 
-    public boolean isSongPlaying() {
-        WebElement soundBarVisualizer = driver.findElement(soundBarPlayLocator);
-        return soundBarVisualizer.isDisplayed();
-    }
+//    public SearchPageSearch enterTextsearchField(String text) {
+//        driver.findElement(searchInput).sendKeys(text);
+//        return this;
+//    }
 
-    public AllSongsPage clickOnAllSongs(){
-        driver.findElement(allSongsMenuItemLocator).click();
-        return new AllSongsPage(driver);
-    }
+//    public AllSongsPage clickOnAllSongs(){
+//        driver.findElement(allSongsMenuItemLocator).click();
+//        return new AllSongsPage(driver);
+//    }
+
 
 
 }
