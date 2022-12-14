@@ -40,10 +40,10 @@ public class BasePageSearch {
 //        return this;
 //    }
 
-//    public AllSongsPage clickOnAllSongs(){
-//        driver.findElement(allSongsMenuItemLocator).click();
-//        return new AllSongsPage(driver);
-//    }
+    public AllSongsPage clickOnAllSongs(){
+        driver.findElement(allSongsMenuItemLocator).click();
+        return new AllSongsPage(driver);
+    }
 
 
 

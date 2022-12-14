@@ -32,6 +32,18 @@ public class BasePageIntern {
 
     By nosSongOnFavList = By.cssSelector("#favoritesWrapper div.text");
     //private WebDriver ;
+    String songTitle ="Dark Days";
+    By songTextFromAllSongsList= By.xpath("//section[@id='songsWrapper']//tr[@class='song-item selected']//td[@class='title']");
+
+    By songArtistfromAllSongsList= By.xpath("//section[@id='songsWrapper']//tr[@class='song-item selected']//td[@class='artist']");
+    By songAlbumfromAllSongsList = By.xpath("//section[@id='songsWrapper']//tr[@class='song-item selected']//td[@class='album']");
+
+    //from result page id="searchExcerptsWrapper;
+       // section data-testid ="song-excerpts" class songs, span, class =details has text "Dark Days
+    //section[@id='searchExcerptsWrapper']//section[@data-testid='song-excerpts']//span[@class='details']
+    //section  data-testid ="artist-excerpts"
+
+    //section  data-testid ="album-excerpts"
 
     public BasePageIntern(WebDriver givenDriver){
         driver = givenDriver;
@@ -52,23 +64,14 @@ public class BasePageIntern {
         driver.findElement(allSongsMenuItemLocator).click();
         return new FavoritePageIntern(driver);
     }
+    public void songTitleInfofromAllSong() {
+        driver.findElement(songTextFromAllSongsList).getText();
+    }
+    public void SongArtistfromAllSongsList() {
+        driver.findElement(songTextFromAllSongsList).getText();
+    }
+    public void songAlbumfromAllSongsList() {
+        driver.findElement(songTextFromAllSongsList).getText();
+    }
 
-//    public void addSongtoFavorites() {
-//        driver.findElement(addButton).click();
-//        driver.findElement(favoritesBtn).click();
-//
-//    }
-//    public void getSongLocator() {
-//       driver.findElement(songToBeSelectFromAllSongs);
-//        return this;
-//    }
-//    public String getSongText() {
-//        driver.findElement(songToBeSelectFromAllSongs).getText();
-//        return this;
-//    }
-//
-//    public String checkSongInFavList() {
-//        driver.findElement(favSonginFavList).getText();
-//        return this;
-//    }
 }
