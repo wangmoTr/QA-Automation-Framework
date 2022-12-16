@@ -75,3 +75,5 @@ public class BasePageIntern {
     }
 
 }
+
+//section[@id='searchExcerptsWrapper']//section[@data-testid='song-excerpts']//span[contains(.,'Dark Days')]
