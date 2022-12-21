@@ -19,9 +19,6 @@ public class Search extends BaseTest {
         searching.searchBox(songName);
         //check for the results
         resultFromSearch();
-        //*[@id='songResultsWrapper']//td[@class='title']
-        //Assert.assertEquals(songresult.getText(), "Dark Days");
-
     }
      //expect to see result
      public void resultFromSearch(){
