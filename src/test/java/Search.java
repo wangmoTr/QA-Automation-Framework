@@ -17,11 +17,26 @@ public class Search extends BaseTest {
         SearchPageSearch searching = new SearchPageSearch(driver);
         Login.login();
         searching.searchBox(songName);
+        //check for the results
+        resultFromSearch();
+        //*[@id='songResultsWrapper']//td[@class='title']
+        //Assert.assertEquals(songresult.getText(), "Dark Days");
 
     }
      //expect to see result
      public void resultFromSearch(){
          //*[@id='searchExcerptsWrapper']//span[text()="Dark Days"]
+         WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
+         songresult.click();
+
+         WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
+         Assert.assertEquals(isThatCorrectSong.getText(), "Dark Days");
+
+         WebElement isThatCorrectartist = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='artist']"));
+         Assert.assertEquals(isThatCorrectartist.getText(), "Grav");
+
+         WebElement isThatCorrectAlbum = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='album']"));
+         Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
         
      }
      public boolean isSongExisting(String songName) {
