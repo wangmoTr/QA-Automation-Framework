@@ -17,7 +17,7 @@ public class Search extends BaseTest {
     String [] list = {"Dark Days"," Dark Days ","Dark Days "};
 
     String [] caseSenList = {"darks day", "darKs DAy"};
-    @Test(enabled = true)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
+    @Test(enabled = true, priority = 0)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
     public void searchSongTitle() throws InterruptedException{
 
 //        login();
@@ -32,7 +32,7 @@ public class Search extends BaseTest {
         //check for the results
         resultFromSearch();
     }
-    @Test(enabled = true)
+    @Test(enabled = true,priority=1)
     public void isSongSearchwithSentiveCase() {
         LoginPageSearch Login = new LoginPageSearch(driver);
         SearchPageSearch searching = new SearchPageSearch(driver);
@@ -84,7 +84,7 @@ public class Search extends BaseTest {
 //        WebElement songText= driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='"+ songName+"']"));
 //        return songText.isDisplayed();
 //     }
-     @Test(enabled= true)
+     @Test(enabled= true, priority= 2)
      public void clearQuery() {
          login();
          LoginPageSearch Login = new LoginPageSearch(driver);
