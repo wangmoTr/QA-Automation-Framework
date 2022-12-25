@@ -6,9 +6,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Search extends BaseTest {
-    String songName = "Dark Days";
+   // String songName = "Dark Days";
+    //use all cases- exact spelling of song name, ingnore trailing and hading white space
+    String [] list = {"Dark Days"," Dark Days ","Dark Days "};
+
+    String [] caseSenList = {"darks day", "darKs DAy"};
     @Test(enabled = true)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
     public void searchSongTitle() throws InterruptedException{
 
@@ -16,9 +23,28 @@ public class Search extends BaseTest {
         LoginPageSearch Login = new LoginPageSearch(driver);
         SearchPageSearch searching = new SearchPageSearch(driver);
         Login.login();
-        searching.searchBox(songName);
+
+        for (int i=0; i < list.length; i++) {
+            //System.out.println(list[i]);
+            searching.searchBox(list[i]);
+        }
         //check for the results
         resultFromSearch();
+    }
+    @Test(enabled = true)
+    public void isSongSearchwithSentiveCase() {
+        LoginPageSearch Login = new LoginPageSearch(driver);
+        SearchPageSearch searching = new SearchPageSearch(driver);
+        Login.login();
+
+        for (int i=0; i < caseSenList.length; i++) {
+            searching.searchBox(caseSenList[i]);
+        }
+        songResultpage();
+        //negativeSearchResult();
+        //Assert.assertFalse(negativeSearchResult(),"should not shown");
+        Assert.assertEquals(negativeSearchResult(), false);
+
     }
      //expect to see result
      public void resultFromSearch(){
@@ -36,11 +62,29 @@ public class Search extends BaseTest {
          Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
         
      }
+
+     public boolean negativeSearchResult() {
+
+         WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
+        return isThatCorrectSong.isDisplayed();
+         //return false;
+
+     }
+
+     public void songResultpage(){
+         WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
+         songresult.click();
+
+     }
      public boolean isSongExisting(String songName) {
          WebElement allsongs = driver.findElement(By.xpath("//a[@href='#!/songs']"));
          allsongs.click();
         WebElement songText= driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='"+ songName+"']"));
         return songText.isDisplayed();
+     }
+     @Test(enabled= true)
+     public void clearQuery() {
+
      }
 
 
