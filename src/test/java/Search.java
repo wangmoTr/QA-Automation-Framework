@@ -1,6 +1,7 @@
 import InternSearch.pages.LoginPageSearch;
 import InternSearch.pages.SearchPageSearch;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -11,7 +12,7 @@ import java.util.List;
 
 
 public class Search extends BaseTest {
-   // String songName = "Dark Days";
+    String songName = "Dark Days";
     //use all cases- exact spelling of song name, ingnore trailing and hading white space
     String [] list = {"Dark Days"," Dark Days ","Dark Days "};
 
@@ -76,16 +77,29 @@ public class Search extends BaseTest {
          songresult.click();
 
      }
-     public boolean isSongExisting(String songName) {
-         WebElement allsongs = driver.findElement(By.xpath("//a[@href='#!/songs']"));
-         allsongs.click();
-        WebElement songText= driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='"+ songName+"']"));
-        return songText.isDisplayed();
-     }
+     //not need yet
+//     public boolean isSongExisting(String songName) {
+//         WebElement allsongs = driver.findElement(By.xpath("//a[@href='#!/songs']"));
+//         allsongs.click();
+//        WebElement songText= driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='"+ songName+"']"));
+//        return songText.isDisplayed();
+//     }
      @Test(enabled= true)
      public void clearQuery() {
+         login();
+         LoginPageSearch Login = new LoginPageSearch(driver);
+         SearchPageSearch searching = new SearchPageSearch(driver);
+         Login.login();
+         searching.searchBox(songName);
+         WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
+         InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+         isClearResultAfterDeleting("Dark Days");
 
      }
+     public void isClearResultAfterDeleting(String songName){
+        WebElement searchResult = driver.findElement(By.cssSelector("#searchExcerptsWrapper h1"));
+        Assert.assertEquals(searchResult.getText(), "Search");
 
+     }
 
 }
