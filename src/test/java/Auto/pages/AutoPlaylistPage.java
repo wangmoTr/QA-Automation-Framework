@@ -8,11 +8,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class AutoPlaylistPage extends AutoBasePage {
 
     //Locators
-//    By shuffleBtnLocator = By.cssSelector(".btn-shuffle-all");
-//    By firstSongLocator = By.cssSelector(".play");
+      //By addPlaylistBtn =By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
+    By addPlaylistBtn =By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']//li[@data-testid='playlist-context-menu-create-simple']");
+
+    String [] nameofList = { "abc", "abc", "abcd", "abcdef", "tencharact","eleveneCharcter"};
 
     public AutoPlaylistPage(WebDriver givenDriver) {
         super(givenDriver);
+    }
+
+    public AutoPlaylistPage createListPage() {
+        driver.findElement(addPlaylistBtn).click();
+        return this;
     }
 
 //    public AutoPlaylistPage shuffle(){

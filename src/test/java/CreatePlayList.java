@@ -1,6 +1,6 @@
-import POM.pages.AllSongsPage;
-import POM.pages.HomePage;
-import POM.pages.LoginPage;
+import Auto.pages.AutoHomePage;
+import Auto.pages.AutoLoginPage;
+import Auto.pages.AutoPlaylistPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -12,14 +12,14 @@ import java.util.List;
 
 public class CreatePlayList extends BaseTest{
     @Test
-    public void LoginValidEmailPasswordTest () {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
-
-        loginPage.provideEmail("demo@class.com");
-        loginPage.providePassword("te$t$tudent");
-        loginPage.clickSubmitBtn();
+    public void createNewList () {
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
 
     }
+
+    ////*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']//li[@data-testid='playlist-context-menu-create-simple']
 }
