@@ -10,9 +10,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static org.testng.Assert.*;
+
 public class CreatePlayList extends BaseTest{
 
     String [] nameofList = { "abc", "abc", "abcd", "abcdef", "tencharact","eleveneCharcter"};
+    By enterNameList = By.cssSelector("[type ='text]");
+    String playListName="my list";
     @Test
     public void createNewList () {
         AutoLoginPage loginPage = new AutoLoginPage(driver);
@@ -22,13 +26,19 @@ public class CreatePlayList extends BaseTest{
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         playList.playListArea();
         playList.addingPlaylistbtn();
-        //playList.inputPlayListName("abc");
-        //Assert.assertEquals(getConfirmationPopupText(), "Created playlist abc");
+        enterPlayListName("bbbbbb");
+        Assert.assertEquals(getConfirmationPopupText(), "Created playlist");
 
     }
-
-    ////*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']//li[@data-testid='playlist-context-menu-create-simple']
+    public void enterPlayListName(String playListName) {
+        WebElement enterPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
+        enterPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+        //Thread.sleep(3000);
+        enterPlaylistName.sendKeys(playListName);
+        enterPlaylistName.sendKeys(Keys.ENTER);
+    }
     private String getConfirmationPopupText() {
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
+   
 }
