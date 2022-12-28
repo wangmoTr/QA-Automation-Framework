@@ -40,5 +40,5 @@ public class CreatePlayList extends BaseTest{
     private String getConfirmationPopupText() {
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
-   
+
 }
