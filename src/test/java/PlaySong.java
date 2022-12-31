@@ -19,7 +19,6 @@ public class PlaySong extends BaseTest{
 
         LoginPage loginPage = new LoginPage(driver);
         AllSongsPage songsPage = new AllSongsPage(driver);
-        //BasePage basePage = new BasePage(driver);
         HomePage homePage = new HomePage(driver);
 
         //login();

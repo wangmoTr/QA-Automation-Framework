@@ -16,7 +16,11 @@ public class CreatePlayList extends BaseTest{
 
     String [] nameofList = { "abc", "abc", "abcd", "abcdef", "tencharact","eleveneCharcter"};
     By enterNameList = By.cssSelector("[type ='text]");
-    String playListName="my list";
+    String playListName = "my list";
+    String firstQ = "\"";
+    String secondQ = ".";
+    String lastQ = "\"";
+    String name= firstQ+ playListName+secondQ+lastQ;
     @Test
     public void createNewList () {
         AutoLoginPage loginPage = new AutoLoginPage(driver);
@@ -26,8 +30,10 @@ public class CreatePlayList extends BaseTest{
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         playList.playListArea();
         playList.addingPlaylistbtn();
-        enterPlayListName("bbbbbb");
-        Assert.assertEquals(getConfirmationPopupText(), "Created playlist");
+        enterPlayListName(playListName);
+        //Assert.assertEquals(getConfirmationPopupText(), "Created playlist");
+        WebElement popupText = driver.findElement(By.cssSelector("div.success.show"));
+        Assert.assertEquals(popupText.getText(),"Created playlist "+ name );
 
     }
     public void enterPlayListName(String playListName) {
@@ -40,5 +46,6 @@ public class CreatePlayList extends BaseTest{
     private String getConfirmationPopupText() {
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
+
 
 }
