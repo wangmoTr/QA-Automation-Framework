@@ -6,18 +6,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Date;
+import java.util.List;
+
 public class AutoPlaylistPage extends AutoBasePage {
 
     //Locators
-      By playlistLocator =By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
-      //By addingPlaylistBtnSelector =By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']//li[@data-testid='playlist-context-menu-create-simple']");
-   ////li[contains(text(),'New Playlist']
-       By addingPlaylistBtn = By.xpath("//div[contains(text(),'New Playlist']");
+    By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
+    By addingPlaylistBtn = By.xpath("//div[contains(text(),'New Playlist']");
+    By playListsection = By.cssSelector(".playlist:nth-child(3)");
+    By delBtn = By.cssSelector(".btn-delete-playlist");
 
-    //By enterNameList = By.cssSelector("[type ='text]");
-
-
-
+    //By navigatetoDelete = By.xpath("//*[@id=\"playlists\"]//li[(contains(.,'Delete'))]");
     public AutoPlaylistPage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -26,10 +26,10 @@ public class AutoPlaylistPage extends AutoBasePage {
         driver.findElement(playlistLocator).click();
         return this;
     }
-     ////li[(contains(.,'New Playlist'))]
+
+    ////li[(contains(.,'New Playlist'))]
     public AutoPlaylistPage addingPlaylistbtn() {
-        WebElement input= driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
-        //input.sendKeys(playlistName);
+        WebElement input = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
         input.click();
         return this;
     }
@@ -39,4 +39,11 @@ public class AutoPlaylistPage extends AutoBasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(playlistLocator)).click();
     }
 
+    public AutoPlaylistPage deletingPlaylist(String name) {
+        List<WebElement> playlists = driver.findElements(By.cssSelector(".playlist"));
+            actions.contextClick(playlists.get(2)).perform();
+            WebElement deleting = driver.findElement((delBtn));
+            deleting.click();
+            return this;
+        }
 }

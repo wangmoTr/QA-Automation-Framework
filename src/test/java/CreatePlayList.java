@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.testng.Assert.*;
 
-public class CreatePlayList extends BaseTest{
+public class CreatePlayList extends BaseTest1{
 
     String [] nameofList = { "abc", "abc", "abcd", "abcdef", "tencharact","eleveneCharcter"};
     By enterNameList = By.cssSelector("[type ='text]");
@@ -20,21 +20,36 @@ public class CreatePlayList extends BaseTest{
     String firstQ = "\"";
     String secondQ = ".";
     String lastQ = "\"";
-    String name= firstQ+ playListName+secondQ+lastQ;
-    @Test
-    public void createNewList () {
+    String name= "\""+ playListName+"."+"\"";
+
+
+    @Test(enabled = true, priority = 0)
+    public void createNewList () throws InterruptedException {
+        //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
         AutoPlaylistPage playList = new AutoPlaylistPage(driver);
         loginPage.login();
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName(playListName);
-        //Assert.assertEquals(getConfirmationPopupText(), "Created playlist");
-        WebElement popupText = driver.findElement(By.cssSelector("div.success.show"));
-        Assert.assertEquals(popupText.getText(),"Created playlist "+ name );
+        //THEN
+        Assert.assertEquals(getConfirmationPopupText(),"Created playlist "+ "\""+ playListName+"."+"\"" );
+    }
 
+    @Test(enabled = true, priority = 1)
+    public void deletePlaylist()throws InterruptedException {
+        //GIVEN
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
+        playList.deletingPlaylist(playListName);
+        Assert.assertEquals(getConfirmationPopupText(),"Deleted playlist "+ "\""+ playListName+"."+"\"");
     }
     public void enterPlayListName(String playListName) {
         WebElement enterPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
@@ -44,6 +59,7 @@ public class CreatePlayList extends BaseTest{
         enterPlaylistName.sendKeys(Keys.ENTER);
     }
     private String getConfirmationPopupText() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
 
