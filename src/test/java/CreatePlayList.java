@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static org.testng.Assert.*;
 
@@ -50,6 +51,26 @@ public class CreatePlayList extends BaseTest1{
         //WHEN
         playList.deletingPlaylist(playListName);
         Assert.assertEquals(getConfirmationPopupText(),"Deleted playlist "+ "\""+ playListName+"."+"\"");
+    }
+
+    @Test(enabled = true, priority = 2)
+    public void createmultipleList () throws InterruptedException {
+        //GIVEN
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
+        //THEN
+        IntStream.range(0, nameofList.length).forEach(i -> {
+            playList.playListArea();
+            playList.addingPlaylistbtn();
+            enterPlayListName(nameofList[i]);
+            assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + nameofList[i] + "." + "\"");
+        });
+
+
     }
     public void enterPlayListName(String playListName) {
         WebElement enterPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));

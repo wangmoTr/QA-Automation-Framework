@@ -17,7 +17,6 @@ public class AutoPlaylistPage extends AutoBasePage {
     By playListsection = By.cssSelector(".playlist:nth-child(3)");
     By delBtn = By.cssSelector(".btn-delete-playlist");
 
-    //By navigatetoDelete = By.xpath("//*[@id=\"playlists\"]//li[(contains(.,'Delete'))]");
     public AutoPlaylistPage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -32,11 +31,6 @@ public class AutoPlaylistPage extends AutoBasePage {
         WebElement input = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
         input.click();
         return this;
-    }
-
-    private void choosePlaylistByName(String name) {
-        By playlistLocator = By.xpath("//a[contains(text(), '" + name + "')]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(playlistLocator)).click();
     }
 
     public AutoPlaylistPage deletingPlaylist(String name) {
