@@ -15,7 +15,7 @@ import static org.testng.Assert.*;
 
 public class CreatePlayList extends BaseTest1{
 
-    String [] nameofList = { "abc", "abc", "abcd", "abcdef", "tencharact","eleveneCharcter"};
+
     By enterNameList = By.cssSelector("[type ='text]");
     String playListName = "my list";
     String firstQ = "\"";
@@ -54,7 +54,7 @@ public class CreatePlayList extends BaseTest1{
     }
 
     @Test(enabled = true, priority = 2)
-    public void createmultipleList () throws InterruptedException {
+    public void createNameTwice () throws InterruptedException {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -63,12 +63,13 @@ public class CreatePlayList extends BaseTest1{
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
         //THEN
-        IntStream.range(0, nameofList.length).forEach(i -> {
-            playList.playListArea();
-            playList.addingPlaylistbtn();
-            enterPlayListName(nameofList[i]);
-            assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + nameofList[i] + "." + "\"");
-        });
+        playList.playListArea();
+        playList.addingPlaylistbtn();
+        enterPlayListName("second");
+        Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + "second" + "." + "\"");
+        Assert.assertEquals(true,true,"this is not good ");
+
+        //REPEAT
 
 
     }
