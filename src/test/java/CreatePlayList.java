@@ -47,6 +47,7 @@ public class CreatePlayList extends BaseTest1{
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
         playList.deletingPlaylist(playListName);
+        //THEN
         Assert.assertEquals(getConfirmationMessage(),true);
     }
 
@@ -59,17 +60,15 @@ public class CreatePlayList extends BaseTest1{
         loginPage.login();
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
-        //THEN
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName("second");
+        //THEN
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + "second" + "." + "\"");
-
         //REPEAT
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName("second");
-
         //EXPECTED TO BE FALSE
         Assert.assertEquals(getConfirmationMessage(),false,"CANNOT ENTER SAME NAME");
     }
@@ -83,12 +82,11 @@ public class CreatePlayList extends BaseTest1{
         loginPage.login();
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
-        //THEN
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName(tenChars);
+        //THEN
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + tenChars + "." + "\"");
-
     }
     @Test(enabled = true, priority = 4)
     public void createNameWith9Chars () throws InterruptedException {
@@ -99,10 +97,10 @@ public class CreatePlayList extends BaseTest1{
         loginPage.login();
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
-        //THEN
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName(nineChars);
+        //THEN
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + nineChars + "." + "\"");
     }
     @Test(enabled = true, priority = 3)
@@ -118,8 +116,7 @@ public class CreatePlayList extends BaseTest1{
         playList.playListArea();
         playList.addingPlaylistbtn();
         enterPlayListName(two);
-        //Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + two + "." + "\"","this is wrong");
-
+        Assert.assertEquals(getConfirmationMessage(),false);
     }
 
     public void enterPlayListName(String playListName) {
