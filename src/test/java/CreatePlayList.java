@@ -8,13 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
-import static org.testng.Assert.*;
-
 public class CreatePlayList extends BaseTest1{
-
 
     By enterNameList = By.cssSelector("[type ='text]");
     String playListName = "my list";
@@ -22,6 +16,9 @@ public class CreatePlayList extends BaseTest1{
     String secondQ = ".";
     String lastQ = "\"";
     String name= "\""+ playListName+"."+"\"";
+    String tenChars="TenthTenth";
+    String two="two";
+    String nineChars="NineChars";
 
 
     @Test(enabled = true, priority = 0)
@@ -50,7 +47,7 @@ public class CreatePlayList extends BaseTest1{
         Assert.assertTrue(homePage.isUserAvatarDisplayed());
         //WHEN
         playList.deletingPlaylist(playListName);
-        Assert.assertEquals(getConfirmationPopupText(),"Deleted playlist "+ "\""+ playListName+"."+"\"");
+        Assert.assertEquals(getConfirmationMessage(),true);
     }
 
     @Test(enabled = true, priority = 2)
@@ -67,12 +64,64 @@ public class CreatePlayList extends BaseTest1{
         playList.addingPlaylistbtn();
         enterPlayListName("second");
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + "second" + "." + "\"");
-        Assert.assertEquals(true,true,"this is not good ");
 
         //REPEAT
+        playList.playListArea();
+        playList.addingPlaylistbtn();
+        enterPlayListName("second");
 
+        //EXPECTED TO BE FALSE
+        Assert.assertEquals(getConfirmationMessage(),false,"CANNOT ENTER SAME NAME");
+    }
+
+    @Test(enabled = true, priority = 3)
+    public void createNameWith10Chars () throws InterruptedException {
+        //GIVEN
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
+        //THEN
+        playList.playListArea();
+        playList.addingPlaylistbtn();
+        enterPlayListName(tenChars);
+        Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + tenChars + "." + "\"");
 
     }
+    @Test(enabled = true, priority = 4)
+    public void createNameWith9Chars () throws InterruptedException {
+        //GIVEN
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
+        //THEN
+        playList.playListArea();
+        playList.addingPlaylistbtn();
+        enterPlayListName(nineChars);
+        Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + nineChars + "." + "\"");
+    }
+    @Test(enabled = true, priority = 3)
+    public void createNameTwoChars () throws InterruptedException {
+        //GIVEN
+        AutoLoginPage loginPage = new AutoLoginPage(driver);
+        AutoHomePage homePage = new AutoHomePage(driver);
+        AutoPlaylistPage playList = new AutoPlaylistPage(driver);
+        loginPage.login();
+        Assert.assertTrue(homePage.isUserAvatarDisplayed());
+        //WHEN
+        //THEN
+        playList.playListArea();
+        playList.addingPlaylistbtn();
+        enterPlayListName(two);
+        //Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + two + "." + "\"","this is wrong");
+
+    }
+
     public void enterPlayListName(String playListName) {
         WebElement enterPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
         enterPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
@@ -84,6 +133,8 @@ public class CreatePlayList extends BaseTest1{
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
-
-
+    private boolean getConfirmationMessage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return driver.findElement(By.cssSelector("div.success.show")).isDisplayed();
+    }
 }
