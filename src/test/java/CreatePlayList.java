@@ -18,7 +18,7 @@ public class CreatePlayList extends BaseTest1{
     String name= "\""+ playListName+"."+"\"";
     String tenChars="TenthTenth";
     String two="two";
-    String nineChars="NineChars";
+    String elevenChars="elevenChars";
 
 
     @Test(enabled = true, priority = 0)
@@ -89,7 +89,7 @@ public class CreatePlayList extends BaseTest1{
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + tenChars + "." + "\"");
     }
     @Test(enabled = true, priority = 4)
-    public void createNameWith9Chars () throws InterruptedException {
+    public void createNameWith11Chars () throws InterruptedException {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -99,9 +99,9 @@ public class CreatePlayList extends BaseTest1{
         //WHEN
         playList.playListArea();
         playList.addingPlaylistbtn();
-        enterPlayListName(nineChars);
+        enterPlayListName(elevenChars);
         //THEN
-        Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + nineChars + "." + "\"");
+        Assert.assertEquals(getConfirmationMessage(),false);
     }
     @Test(enabled = true, priority = 3)
     public void createNameTwoChars () throws InterruptedException {
@@ -122,7 +122,6 @@ public class CreatePlayList extends BaseTest1{
     public void enterPlayListName(String playListName) {
         WebElement enterPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
         enterPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
-        //Thread.sleep(3000);
         enterPlaylistName.sendKeys(playListName);
         enterPlaylistName.sendKeys(Keys.ENTER);
     }
