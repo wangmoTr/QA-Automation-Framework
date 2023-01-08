@@ -42,9 +42,7 @@ public class Search extends BaseTest {
             searching.searchBox(caseSenList[i]);
         }
         songResultpage();
-        //negativeSearchResult();
-        //Assert.assertFalse(negativeSearchResult(),"should not shown");
-        Assert.assertEquals(negativeSearchResult(), false);
+        Assert.assertFalse(negativeSearchResult());
 
     }
      //expect to see result
