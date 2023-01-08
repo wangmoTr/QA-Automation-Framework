@@ -15,7 +15,6 @@ public class Search extends BaseTest {
     String songName = "Dark Days";
     //use all cases- exact spelling of song name, ingnore trailing and hading white space
     String [] list = {"Dark Days"," Dark Days ","Dark Days "};
-
     String [] caseSenList = {"darks day", "darKs DAy"};
     @Test(enabled = true, priority = 0)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
     public void searchSongTitle() {
@@ -59,29 +58,17 @@ public class Search extends BaseTest {
 
          WebElement isThatCorrectAlbum = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='album']"));
          Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
-        
      }
-
      public boolean negativeSearchResult() {
 
          WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
         return isThatCorrectSong.isDisplayed();
-         //return false;
-
      }
 
      public void songResultpage(){
          WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
          songresult.click();
-
      }
-     //not need yet
-//     public boolean isSongExisting(String songName) {
-//         WebElement allsongs = driver.findElement(By.xpath("//a[@href='#!/songs']"));
-//         allsongs.click();
-//        WebElement songText= driver.findElement(By.xpath("//*[@id='songsWrapper']//td[text()='"+ songName+"']"));
-//        return songText.isDisplayed();
-//     }
      @Test(enabled= true, priority= 2)
      public void clearQuery() {
          login();
@@ -92,12 +79,9 @@ public class Search extends BaseTest {
          WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
          InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
          isClearResultAfterDeleting("Dark Days");
-
      }
      public void isClearResultAfterDeleting(String songName){
         WebElement searchResult = driver.findElement(By.cssSelector("#searchExcerptsWrapper h1"));
         Assert.assertEquals(searchResult.getText(), "Search");
-
      }
-
 }
