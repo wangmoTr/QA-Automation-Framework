@@ -70,8 +70,6 @@ public class LoginTests extends BaseTest {
 
         HomePage homePage = loginPage.login();
 
-        //homePage.clickOnAllSongs()
-        //        .shuffle();
         Assert.assertTrue(homePage.isSongPlaying());
 
     }

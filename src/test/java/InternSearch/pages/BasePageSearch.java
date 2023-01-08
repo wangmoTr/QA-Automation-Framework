@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -37,9 +36,9 @@ public class BasePageSearch {
         return driver.findElement(avatarLocator).isDisplayed();
     }
 
-    public AllSongsPage clickOnAllSongs(){
+    public AllSongsPageSearch clickOnAllSongs(){
         driver.findElement(allSongsMenuItemLocator).click();
-        return new AllSongsPage(driver);
+        return new AllSongsPageSearch(driver);
     }
 
 

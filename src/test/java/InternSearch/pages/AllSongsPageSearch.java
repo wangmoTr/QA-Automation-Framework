@@ -1,21 +1,22 @@
 package InternSearch.pages;
 
+import POM.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AllSongsPage extends BasePageSearch {
+public class AllSongsPageSearch extends BasePage {
 
     //Locators
     By shuffleBtnLocator = By.cssSelector(".btn-shuffle-all");
     By firstSongLocator = By.cssSelector(".play");
 
-    public AllSongsPage(WebDriver givenDriver) {
+    public AllSongsPageSearch(WebDriver givenDriver) {
         super(givenDriver);
     }
 
-    public AllSongsPage shuffle(){
+    public AllSongsPageSearch shuffle(){
         driver.findElement(shuffleBtnLocator).click();
         return this;
     }
