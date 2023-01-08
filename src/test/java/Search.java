@@ -18,7 +18,7 @@ public class Search extends BaseTest {
 
     String [] caseSenList = {"darks day", "darKs DAy"};
     @Test(enabled = true, priority = 0)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
-    public void searchSongTitle() throws InterruptedException{
+    public void searchSongTitle() {
 
 //        login();
         LoginPageSearch Login = new LoginPageSearch(driver);
