@@ -56,13 +56,18 @@ public class Search extends BaseTest {
      }
      @Test(enabled= true, priority= 2)
      public void clearQuery() {
+        //GIVEN
          login();
          LoginPageSearch Login = new LoginPageSearch(driver);
          SearchPageSearch searching = new SearchPageSearch(driver);
          Login.login();
+         
+         //WHEN
          searching.searchBox(songName);
          WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
          InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+
+         //THEN
          isClearResultAfterDeleting("Dark Days");
      }
      public void isClearResultAfterDeleting(String songName){

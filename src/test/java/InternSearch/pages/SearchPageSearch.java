@@ -29,17 +29,7 @@ public class SearchPageSearch extends BasePageSearch {
     public SearchPageSearch searchBox(String songName) {
         searchInput.sendKeys(songName);
         return this;
-
     }
-
-    //    public SearchPageSearch searchBox(String songName){
-////        searchInput.sendKeys(songName);
-////        return this;
-//        for (int i=0; i < list.length; i++) {;
-//            searchInput.sendKeys(songName);
-//        }
-//
-//    }
     public SearchPageSearch resultFromSearch() {
         WebElement songresult = driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
         songresult.click();
