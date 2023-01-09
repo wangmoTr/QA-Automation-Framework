@@ -29,7 +29,7 @@ public class Search extends BaseTest {
             searching.searchBox(list[i]);
         }
         //check for the results
-        resultFromSearch();
+        searching.resultFromSearch();
     }
     @Test(enabled = true,priority=1)
     public void isSongSearchwithSentiveCase() {
@@ -46,10 +46,8 @@ public class Search extends BaseTest {
     }
      //expect to see result
      public void resultFromSearch(){
-         //*[@id='searchExcerptsWrapper']//span[text()="Dark Days"]
          WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
          songresult.click();
-
          WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
          Assert.assertEquals(isThatCorrectSong.getText(), "Dark Days");
 
