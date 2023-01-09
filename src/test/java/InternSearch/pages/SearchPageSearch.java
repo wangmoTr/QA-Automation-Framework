@@ -11,16 +11,30 @@ public class SearchPageSearch extends BasePageSearch {
 
     //Locators
     @FindBy(css = "[type='search']")
-    WebElement searchInput;
+    private WebElement searchInput;
 
-//    String songName = "Dark Days";
-//    //use all cases- exact spelling of song name, ingnore trailing and hading white space
-//    String [] list = {"Dark Days"," Dark Days ","Dark Days "};
-//    String [] caseSenList = {"darks day", "darKs DAy"};
+    @FindBy(xpath = "//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']")
+    private WebElement songresult;
+    //locator for correct song
+    @FindBy(xpath = "//*[@id='songResultsWrapper']//td[@class='title']")
+    private WebElement isThatCorrectSong;
+    //locator is correct artist
+    @FindBy(xpath = "//*[@id='songResultsWrapper']//td[@class='artist']")
+    private WebElement isThatCorrectartist;
+
+    //locator for correct Album
+    @FindBy(xpath = "//*[@id='songResultsWrapper']//td[@class='album']")
+    private WebElement isThatCorrectAlbum;
+    //search result-search area
+    @FindBy(css = "#searchExcerptsWrapper h1")
+    private WebElement searchResult;
 
 
-    //By searchInput = By.cssSelector("[type='search']");
 
+    String songName = "Dark Days";
+    //use all cases- exact spelling of song name, ingnore trailing and hading white space
+    String [] list = {"Dark Days"," Dark Days ","Dark Days "};
+    String [] caseSenList = {"darks day", "darKs DAy"};
 
     public SearchPageSearch(WebDriver givenDriver) {
         super(givenDriver);
@@ -30,18 +44,35 @@ public class SearchPageSearch extends BasePageSearch {
         searchInput.sendKeys(songName);
         return this;
     }
+    public SearchPageSearch searchBoxMany() {
+        for (int i=0; i < list.length; i++) {
+            searchInput.sendKeys(list[i]);
+        }
+        return this;
+    }
+    public SearchPageSearch searchBoxforCaseSensitive() {
+        for (int i=0; i < caseSenList.length; i++) {
+            searchInput.sendKeys(caseSenList[i]);
+        }
+        return this;
+    }
+
     public SearchPageSearch resultFromSearch() {
-        WebElement songresult = driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
         songresult.click();
-        WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
         Assert.assertEquals(isThatCorrectSong.getText(), "Dark Days");
-
-        WebElement isThatCorrectartist = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='artist']"));
         Assert.assertEquals(isThatCorrectartist.getText(), "Grav");
-
-        WebElement isThatCorrectAlbum = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='album']"));
         Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
         return this;
+    }
+    public void isClearResultAfterDeleting(String songName){
+        Assert.assertEquals(searchResult.getText(), "Search");
+    }
+    public boolean negativeSearchResult() {
+        return isThatCorrectSong.isDisplayed();
+    }
+
+    public void songResultpage(){
+        songresult.click();
     }
 }
 

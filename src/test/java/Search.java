@@ -12,48 +12,35 @@ import java.util.List;
 
 
 public class Search extends BaseTest {
-    String songName = "Dark Days";
-    //use all cases- exact spelling of song name, ingnore trailing and hading white space
-    String [] list = {"Dark Days"," Dark Days ","Dark Days "};
-    String [] caseSenList = {"darks day", "darKs DAy"};
     @Test(enabled = true, priority = 0)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
     public void searchSongTitle() {
-
-//        login();
+        //GIVEN
         LoginPageSearch Login = new LoginPageSearch(driver);
         SearchPageSearch searching = new SearchPageSearch(driver);
         Login.login();
 
-        for (int i=0; i < list.length; i++) {
-            //System.out.println(list[i]);
-            searching.searchBox(list[i]);
-        }
-        //check for the results
+        //WHEN
+        searching.searchBoxMany();
+
+        //THEN
         searching.resultFromSearch();
     }
     @Test(enabled = true,priority=1)
     public void isSongSearchwithSentiveCase() {
+        //GIVEN
         LoginPageSearch Login = new LoginPageSearch(driver);
         SearchPageSearch searching = new SearchPageSearch(driver);
         Login.login();
 
-        for (int i=0; i < caseSenList.length; i++) {
-            searching.searchBox(caseSenList[i]);
-        }
-        songResultpage();
-        Assert.assertFalse(negativeSearchResult());
+        //WHEN
 
+        searching.searchBoxforCaseSensitive();
+
+        //THEN
+        searching.songResultpage();
+        Assert.assertFalse(searching.negativeSearchResult());
     }
-     public boolean negativeSearchResult() {
 
-         WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
-        return isThatCorrectSong.isDisplayed();
-     }
-
-     public void songResultpage(){
-         WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
-         songresult.click();
-     }
      @Test(enabled= true, priority= 2)
      public void clearQuery() {
         //GIVEN
@@ -67,10 +54,6 @@ public class Search extends BaseTest {
          InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
 
          //THEN
-         isClearResultAfterDeleting("Dark Days");
-     }
-     public void isClearResultAfterDeleting(String songName){
-        WebElement searchResult = driver.findElement(By.cssSelector("#searchExcerptsWrapper h1"));
-        Assert.assertEquals(searchResult.getText(), "Search");
+         searching.isClearResultAfterDeleting("Dark Days");
      }
 }
