@@ -44,19 +44,6 @@ public class Search extends BaseTest {
         Assert.assertFalse(negativeSearchResult());
 
     }
-     //expect to see result
-     public void resultFromSearch(){
-         WebElement songresult=driver.findElement(By.xpath("//*[@data-testid='song-excerpts']//button[@data-test='view-all-songs-btn']"));
-         songresult.click();
-         WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
-         Assert.assertEquals(isThatCorrectSong.getText(), "Dark Days");
-
-         WebElement isThatCorrectartist = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='artist']"));
-         Assert.assertEquals(isThatCorrectartist.getText(), "Grav");
-
-         WebElement isThatCorrectAlbum = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='album']"));
-         Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
-     }
      public boolean negativeSearchResult() {
 
          WebElement isThatCorrectSong = driver.findElement(By.xpath("//*[@id='songResultsWrapper']//td[@class='title']"));
