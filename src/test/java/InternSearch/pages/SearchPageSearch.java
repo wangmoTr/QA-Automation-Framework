@@ -1,6 +1,7 @@
 package InternSearch.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,8 +29,12 @@ public class SearchPageSearch extends BasePageSearch {
     //search result-search area
     @FindBy(css = "#searchExcerptsWrapper h1")
     private WebElement searchResult;
+
+    @FindBy(css = "input[name='q']")
+    private WebElement inputField;
+
     String songName = "Dark Days";
-    //use all cases- exact spelling of song name, ingnore trailing and hading white space
+    //use all cases- exact spelling of song name, ingnore trailing and heading white space
     String[] list = {"Dark Days", " Dark Days ", "Dark Days "};
     String[] caseSenList = {"darks day", "darKs DAy"};
 
@@ -74,6 +79,9 @@ public class SearchPageSearch extends BasePageSearch {
 
     public void songResultpage() {
         songresult.click();
+    }
+    public void clearInputQuery() {
+        inputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
     }
 }
 

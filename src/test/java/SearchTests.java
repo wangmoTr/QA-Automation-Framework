@@ -47,8 +47,7 @@ public class SearchTests extends BaseTest {
         searching.searchBox("Dark Days");
 
         //WHEN
-        WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
-        InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+        searching.clearInputQuery();
 
         //THEN
         searching.isClearResultAfterDeleting("Dark Days");
