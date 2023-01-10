@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PlayListTests extends BaseTest1{
+public class PlayListTests extends BaseTest {
 
     By enterNameList = By.cssSelector("[type ='text]");
     String playListName = "my list";
@@ -22,7 +22,7 @@ public class PlayListTests extends BaseTest1{
 
 
     @Test(enabled = true, priority = 0)
-    public void createNewList () throws InterruptedException {
+    public void createNewList () {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -38,7 +38,7 @@ public class PlayListTests extends BaseTest1{
     }
 
     @Test(enabled = true, priority = 1)
-    public void deletePlaylist()throws InterruptedException {
+    public void deletePlaylist() {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -52,7 +52,7 @@ public class PlayListTests extends BaseTest1{
     }
 
     @Test(enabled = true, priority = 2)
-    public void createNameTwice () throws InterruptedException {
+    public void createNameTwice () {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -74,7 +74,7 @@ public class PlayListTests extends BaseTest1{
     }
 
     @Test(enabled = true, priority = 3)
-    public void createNameWith10Chars () throws InterruptedException {
+    public void createNameWith10Chars ()  {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -89,7 +89,7 @@ public class PlayListTests extends BaseTest1{
         Assert.assertEquals(getConfirmationPopupText(), "Created playlist " + "\"" + tenChars + "." + "\"");
     }
     @Test(enabled = true, priority = 4)
-    public void createNameWith11Chars () throws InterruptedException {
+    public void createNameWith11Chars ()  {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);
@@ -104,7 +104,7 @@ public class PlayListTests extends BaseTest1{
         Assert.assertEquals(getConfirmationMessage(),false);
     }
     @Test(enabled = true, priority = 3)
-    public void createNameTwoChars () throws InterruptedException {
+    public void createNameTwoChars ()  {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
         AutoHomePage homePage = new AutoHomePage(driver);

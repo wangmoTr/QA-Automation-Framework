@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.util.UUID;
 
-public class ChangeUsernameTests extends  BaseTest {
+public class ChangeUsernameTests extends BaseTestOrigin {
 
 
     //    Create a test to change user’s name and verify it’s changed

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class PlaySong extends BaseTest{
+public class PlaySong extends BaseTestOrigin {
 
     @Test
     public void playSong() throws InterruptedException {

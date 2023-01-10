@@ -1,5 +1,4 @@
 import POM.pages.AllSongsPage;
-import POM.pages.BasePage;
 import POM.pages.HomePage;
 import POM.pages.LoginPage;
 import org.openqa.selenium.By;
@@ -12,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class LoginTests extends BaseTest {
+public class LoginTests extends BaseTestOrigin {
 
     @Test
     public void LoginValidEmailPasswordTest () {

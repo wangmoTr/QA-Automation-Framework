@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class RegistrationTests extends BaseTest {
+public class RegistrationTests extends BaseTestOrigin {
 
     @Test
     public static void RegistrationSuccessTest () {
