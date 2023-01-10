@@ -15,6 +15,13 @@ public class AutoPlaylistPage extends AutoBasePage {
     By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
     By delBtn = By.cssSelector(".btn-delete-playlist");
 
+    By enterNameList = By.cssSelector("[type ='text]");
+    String playListName = "my list";
+    String name= "\""+ playListName+"."+"\"";
+    String tenChars="TenthTenth";
+    String two="two";
+    String elevenChars="elevenChars";
+
     public AutoPlaylistPage(WebDriver givenDriver) {
         super(givenDriver);
     }

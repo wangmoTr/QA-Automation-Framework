@@ -10,12 +10,12 @@ import org.testng.annotations.Test;
 
 public class PlayListTests extends BaseTest {
 
-    By enterNameList = By.cssSelector("[type ='text]");
-    String playListName = "my list";
-    String name= "\""+ playListName+"."+"\"";
-    String tenChars="TenthTenth";
-    String two="two";
-    String elevenChars="elevenChars";
+//    By enterNameList = By.cssSelector("[type ='text]");
+//    String playListName = "my list";
+//    String name= "\""+ playListName+"."+"\"";
+//    String tenChars="TenthTenth";
+//    String two="two";
+//    String elevenChars="elevenChars";
 
     @Test(enabled = true, priority = 0)
     public void createNewList () {
@@ -114,6 +114,5 @@ public class PlayListTests extends BaseTest {
         playListPage.enterPlayListName(two);
         Assert.assertEquals(playListPage.getConfirmationMessage(),false);
     }
-
 
 }
