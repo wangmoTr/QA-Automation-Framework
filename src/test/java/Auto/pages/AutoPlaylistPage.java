@@ -40,9 +40,4 @@ public class AutoPlaylistPage extends AutoBasePage {
             deleting.click();
             return this;
         }
-//      public String getPlaylistName() {
-//          List<WebElement> playlists = driver.findElements(By.cssSelector(".playlist"));
-//          return playlists.get(2).getText();
-//
-//      }
 }

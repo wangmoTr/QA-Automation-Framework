@@ -69,9 +69,6 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         HomePage homePage = loginPage.login();
-
-        //homePage.clickOnAllSongs()
-        //        .shuffle();
         Assert.assertTrue(homePage.isSongPlaying());
 
     }
@@ -152,8 +149,6 @@ public class LoginTests extends BaseTest {
         passwordField.sendKeys("te$t$tudent");
         submitButton.click();
         Assert.assertTrue(driver.findElement(avatarSelector).isDisplayed());
-        // WebElement songsMenu = driver.findElement(By.className("songs"));
-        // WebElement songsMenu = driver.findElement(songMenuSelector);
         driver.findElement(songMenuSelector).click();
         Assert.assertTrue(driver.findElement(allButtonSelector).isDisplayed());
         Thread.sleep(2000);
@@ -183,11 +178,8 @@ public class LoginTests extends BaseTest {
         passwordField.sendKeys("te$t$tudent");
         submitButton.click();
         Assert.assertTrue(driver.findElement(avatarSelector).isDisplayed());
-        // WebElement songsMenu = driver.findElement(By.className("songs"));
-        // WebElement songsMenu = driver.findElement(songMenuSelector);
         driver.findElement(searchBarSelector).click();
         driver.findElement(searchBarSelector).sendKeys("Veggie Straws");
-        //Assert.assertTrue(driver.findElement().isDisplayed());
         Thread.sleep(5000);
 
 

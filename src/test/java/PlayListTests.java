@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreatePlayList extends BaseTest1{
+public class PlayListTests extends BaseTest1{
 
     By enterNameList = By.cssSelector("[type ='text]");
     String playListName = "my list";

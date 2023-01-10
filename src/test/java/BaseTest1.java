@@ -15,13 +15,10 @@ import java.net.URI;
 import java.time.Duration;
 
 public class BaseTest1 {
-
     WebDriver driver;
     String url;
     WebDriverWait wait;
     Actions actions;
-
-
 
     @BeforeSuite
     public static void chromeConfigs() {
@@ -31,8 +28,6 @@ public class BaseTest1 {
         } else {
             System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
-
-
     }
 
     @BeforeMethod
@@ -40,17 +35,15 @@ public class BaseTest1 {
     @Parameters({"baseURL"})
     // Make baseURL parameter optional, if it is null, then set it to something)
     public void launchBrowser(@Optional String baseURL) throws MalformedURLException {
-        if (baseURL == null)
-            baseURL ="https://bbb.testpro.io";
+        if (baseURL == null) baseURL = "https://bbb.testpro.io";
         System.setProperty("webdriver.gecko.driver", "geckodriver");
         //driver = pickBrowser(System.getProperty("browser"));
         driver = new ChromeDriver();
         actions = new Actions(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         url = baseURL;
         driver.get(url);
-
     }
 
     @AfterMethod
@@ -73,20 +66,14 @@ public class BaseTest1 {
         WebElement passwordField = driver.findElement(By.cssSelector("[type='password']"));
         passwordField.click();
         passwordField.sendKeys(password);
-
     }
 
-    @DataProvider(name="invalidCredentials")
-    public static Object[][] getCredentials(){
-
-        return new Object[][] {
-                {"invalid@class.com", "invalidPass"},
-                {"d@class.com", ""},
-                {"", ""}
-        };
+    @DataProvider(name = "invalidCredentials")
+    public static Object[][] getCredentials() {
+        return new Object[][]{{"invalid@class.com", "invalidPass"}, {"d@class.com", ""}, {"", ""}};
     }
 
-    public void login(){
+    public void login() {
         provideEmail("demo@class.com");
         providePassword("te$t$tudent");
         clickSubmitBtn();
