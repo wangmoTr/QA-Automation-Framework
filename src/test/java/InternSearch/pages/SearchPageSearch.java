@@ -28,9 +28,6 @@ public class SearchPageSearch extends BasePageSearch {
     //search result-search area
     @FindBy(css = "#searchExcerptsWrapper h1")
     private WebElement searchResult;
-
-
-
     String songName = "Dark Days";
     //use all cases- exact spelling of song name, ingnore trailing and hading white space
     String [] list = {"Dark Days"," Dark Days ","Dark Days "};
