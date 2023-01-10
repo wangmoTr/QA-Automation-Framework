@@ -30,8 +30,8 @@ public class SearchPageSearch extends BasePageSearch {
     private WebElement searchResult;
     String songName = "Dark Days";
     //use all cases- exact spelling of song name, ingnore trailing and hading white space
-    String [] list = {"Dark Days"," Dark Days ","Dark Days "};
-    String [] caseSenList = {"darks day", "darKs DAy"};
+    String[] list = {"Dark Days", " Dark Days ", "Dark Days "};
+    String[] caseSenList = {"darks day", "darKs DAy"};
 
     public SearchPageSearch(WebDriver givenDriver) {
         super(givenDriver);
@@ -41,14 +41,16 @@ public class SearchPageSearch extends BasePageSearch {
         searchInput.sendKeys(songName);
         return this;
     }
+
     public SearchPageSearch searchBoxMany() {
-        for (int i=0; i < list.length; i++) {
+        for (int i = 0; i < list.length; i++) {
             searchInput.sendKeys(list[i]);
         }
         return this;
     }
+
     public SearchPageSearch searchBoxforCaseSensitive() {
-        for (int i=0; i < caseSenList.length; i++) {
+        for (int i = 0; i < caseSenList.length; i++) {
             searchInput.sendKeys(caseSenList[i]);
         }
         return this;
@@ -61,14 +63,16 @@ public class SearchPageSearch extends BasePageSearch {
         Assert.assertEquals(isThatCorrectAlbum.getText(), "Dark Days EP");
         return this;
     }
-    public void isClearResultAfterDeleting(String songName){
+
+    public void isClearResultAfterDeleting(String songName) {
         Assert.assertEquals(searchResult.getText(), "Search");
     }
+
     public boolean negativeSearchResult() {
         return isThatCorrectSong.isDisplayed();
     }
 
-    public void songResultpage(){
+    public void songResultpage() {
         songresult.click();
     }
 }

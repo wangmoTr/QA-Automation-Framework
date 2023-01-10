@@ -3,15 +3,11 @@ import InternSearch.pages.SearchPageSearch;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class Search extends BaseTest {
+public class SearchTests extends BaseTest {
     @Test(enabled = true, priority = 0)// dataProvider = "songTitles", dataProviderClass = BaseTest.class)
     public void searchSongTitle() {
         //GIVEN
@@ -25,7 +21,8 @@ public class Search extends BaseTest {
         //THEN
         searching.resultFromSearch();
     }
-    @Test(enabled = true,priority=1)
+
+    @Test(enabled = true, priority = 1)
     public void isSongSearchwithSentiveCase() {
         //GIVEN
         LoginPageSearch Login = new LoginPageSearch(driver);
@@ -41,19 +38,19 @@ public class Search extends BaseTest {
         Assert.assertFalse(searching.negativeSearchResult());
     }
 
-     @Test(enabled= true, priority= 2)
-     public void clearQuery() {
+    @Test(enabled = true, priority = 2)
+    public void clearQuery() {
         //GIVEN
-         LoginPageSearch Login = new LoginPageSearch(driver);
-         SearchPageSearch searching = new SearchPageSearch(driver);
-         Login.login();
-         searching.searchBox("Dark Days");
+        LoginPageSearch Login = new LoginPageSearch(driver);
+        SearchPageSearch searching = new SearchPageSearch(driver);
+        Login.login();
+        searching.searchBox("Dark Days");
 
-         //WHEN
-         WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
-         InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+        //WHEN
+        WebElement InputField = driver.findElement(By.cssSelector("input[name='q']"));
+        InputField.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
 
-         //THEN
-         searching.isClearResultAfterDeleting("Dark Days");
-     }
+        //THEN
+        searching.isClearResultAfterDeleting("Dark Days");
+    }
 }

@@ -16,7 +16,7 @@ public class AllSongsPageSearch extends BasePageSearch {
         super(givenDriver);
     }
 
-    public AllSongsPageSearch shuffle(){
+    public AllSongsPageSearch shuffle() {
         driver.findElement(shuffleBtnLocator).click();
         return this;
     }
@@ -34,9 +34,4 @@ public class AllSongsPageSearch extends BasePageSearch {
     public void playFromContextMenu() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playback"))).click();
     }
-
-    //Shuffle
-    //Add to Favorite
-    //PlaySong
-    //SortByTitle
 }
