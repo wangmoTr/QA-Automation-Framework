@@ -13,8 +13,6 @@ public class AutoPlaylistPage extends AutoBasePage {
 
     //Locators
     By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
-    By addingPlaylistBtn = By.xpath("//div[contains(text(),'New Playlist']");
-    By playListsection = By.cssSelector(".playlist:nth-child(3)");
     By delBtn = By.cssSelector(".btn-delete-playlist");
 
     public AutoPlaylistPage(WebDriver givenDriver) {
@@ -26,7 +24,6 @@ public class AutoPlaylistPage extends AutoBasePage {
         return this;
     }
 
-    ////li[(contains(.,'New Playlist'))]
     public AutoPlaylistPage addingPlaylistbtn() {
         WebElement input = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
         input.click();
@@ -39,5 +36,19 @@ public class AutoPlaylistPage extends AutoBasePage {
             WebElement deleting = driver.findElement((delBtn));
             deleting.click();
             return this;
-        }
+    }
+    public void enterPlayListName(String playListName) {
+        WebElement enteringPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
+        enteringPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+        enteringPlaylistName.sendKeys(playListName);
+        enteringPlaylistName.sendKeys(Keys.ENTER);
+    }
+    public String getConfirmationPopupText() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return driver.findElement(By.cssSelector("div.success.show")).getText();
+    }
+    public boolean getConfirmationMessage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
+        return driver.findElement(By.cssSelector("div.success.show")).isDisplayed();
+    }
 }
