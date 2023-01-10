@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Date;
@@ -12,10 +13,24 @@ import java.util.List;
 public class AutoPlaylistPage extends AutoBasePage {
 
     //Locators
-    By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
-    By delBtn = By.cssSelector(".btn-delete-playlist");
 
-    By enterNameList = By.cssSelector("[type ='text]");
+//    @FindBy(css = "[type='search']")
+//    private WebElement searchInput
+    //By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
+    @FindBy(xpath = "//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']")
+    private WebElement playlistLocator;
+    @FindBy(css = ".btn-delete-playlist")
+    private WebElement delBtn;
+
+    @FindBy(css = "[type='text']")
+    private WebElement enterNameList;
+
+    @FindBy(xpath = "//li[(contains(.,'New Playlist'))]")
+    private WebElement inputPlaylist;
+
+    @FindBy(css = "input[name='name']")
+    private WebElement enteringPlaylistName;
+
     String playListName = "my list";
     String name= "\""+ playListName+"."+"\"";
     String tenChars="TenthTenth";
@@ -27,25 +42,25 @@ public class AutoPlaylistPage extends AutoBasePage {
     }
 
     public AutoPlaylistPage playListArea() {
-        driver.findElement(playlistLocator).click();
+        playlistLocator.click();
         return this;
     }
 
     public AutoPlaylistPage addingPlaylistbtn() {
-        WebElement input = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
-        input.click();
+       //WebElement inputPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
+        inputPlaylist.click();
         return this;
     }
 
     public AutoPlaylistPage deletingPlaylist(String name) {
         List<WebElement> playlists = driver.findElements(By.cssSelector(".playlist"));
             actions.contextClick(playlists.get(2)).perform();
-            WebElement deleting = driver.findElement((delBtn));
+            WebElement deleting = driver.findElement(delBtn);
             deleting.click();
             return this;
     }
     public void enterPlayListName(String playListName) {
-        WebElement enteringPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
+        //WebElement enteringPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
         enteringPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
         enteringPlaylistName.sendKeys(playListName);
         enteringPlaylistName.sendKeys(Keys.ENTER);
