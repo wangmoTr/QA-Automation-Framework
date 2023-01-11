@@ -11,12 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class AutoPlaylistPage extends AutoBasePage {
-
     //Locators
-
-//    @FindBy(css = "[type='search']")
-//    private WebElement searchInput
-    //By playlistLocator = By.xpath("//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']");
     @FindBy(xpath = "//*[@id='playlists']//*[@data-testid='sidebar-create-playlist-btn']")
     private WebElement playlistLocator;
     @FindBy(css = ".btn-delete-playlist")
@@ -31,12 +26,6 @@ public class AutoPlaylistPage extends AutoBasePage {
     @FindBy(css = "input[name='name']")
     private WebElement enteringPlaylistName;
 
-    String playListName = "my list";
-    String name= "\""+ playListName+"."+"\"";
-    String tenChars="TenthTenth";
-    String two="two";
-    String elevenChars="elevenChars";
-
     public AutoPlaylistPage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -47,28 +36,28 @@ public class AutoPlaylistPage extends AutoBasePage {
     }
 
     public AutoPlaylistPage addingPlaylistbtn() {
-       //WebElement inputPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
         inputPlaylist.click();
         return this;
     }
 
-    public AutoPlaylistPage deletingPlaylist(String name) {
+    public AutoPlaylistPage deletingPlaylist() {
         List<WebElement> playlists = driver.findElements(By.cssSelector(".playlist"));
-            actions.contextClick(playlists.get(2)).perform();
-            WebElement deleting = driver.findElement(delBtn);
-            deleting.click();
-            return this;
+        actions.contextClick(playlists.get(2)).perform();
+        delBtn.click();
+        return this;
     }
+
     public void enterPlayListName(String playListName) {
-        //WebElement enteringPlaylistName = driver.findElement(By.cssSelector("input[name='name']"));
         enteringPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
         enteringPlaylistName.sendKeys(playListName);
         enteringPlaylistName.sendKeys(Keys.ENTER);
     }
+
     public String getConfirmationPopupText() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return driver.findElement(By.cssSelector("div.success.show")).getText();
     }
+
     public boolean getConfirmationMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return driver.findElement(By.cssSelector("div.success.show")).isDisplayed();
