@@ -48,7 +48,7 @@ public class AutoPlaylistPage extends AutoBasePage {
     }
 
     public void enterPlayListName(String playListName) {
-        enteringPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "a", Keys.BACK_SPACE)));
+        enteringPlaylistName.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
         enteringPlaylistName.sendKeys(playListName);
         enteringPlaylistName.sendKeys(Keys.ENTER);
     }

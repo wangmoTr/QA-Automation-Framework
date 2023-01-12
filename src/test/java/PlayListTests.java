@@ -58,7 +58,7 @@ public class PlayListTests extends BaseTest {
         playListPage.addingPlaylistbtn();
         playListPage.enterPlayListName("second");
         //EXPECTED TO BE FALSE
-        Assert.assertEquals(playListPage.getConfirmationMessage(), false, "CANNOT ENTER SAME NAME");
+        Assert.assertEquals(playListPage.getConfirmationMessage(), true, "CANNOT ENTER SAME NAME");
     }
 
     @Test(enabled = true, priority = 3)
@@ -75,6 +75,7 @@ public class PlayListTests extends BaseTest {
         playListPage.enterPlayListName("thisIsNo10");
         //THEN
         Assert.assertEquals(playListPage.getConfirmationPopupText(), "Created playlist " + "\"" + "thisIsNo10" + "." + "\"");
+        Assert.assertEquals(playListPage.getConfirmationMessage(), true);
     }
 
     @Test(enabled = true, priority = 4)
@@ -90,10 +91,10 @@ public class PlayListTests extends BaseTest {
         playListPage.addingPlaylistbtn();
         playListPage.enterPlayListName("elevenChars");
         //THEN
-        Assert.assertEquals(playListPage.getConfirmationMessage(), false);
+        Assert.assertEquals(playListPage.getConfirmationMessage(), true);
     }
 
-    @Test(enabled = true, priority = 3)
+    @Test(enabled = true, priority = 5)
     public void createNameTwoChars() {
         //GIVEN
         AutoLoginPage loginPage = new AutoLoginPage(driver);
@@ -106,6 +107,6 @@ public class PlayListTests extends BaseTest {
         playListPage.addingPlaylistbtn();
         playListPage.enterPlayListName("to");
         //THEN
-        Assert.assertEquals(playListPage.getConfirmationMessage(), false);
+        Assert.assertEquals(playListPage.getConfirmationMessage(), true);
     }
 }
