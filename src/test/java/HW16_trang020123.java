@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -32,8 +33,21 @@ public class HW16_trang020123 {
         WebElement avatarSelector = driver.findElement(By.xpath("//a[@href='/#!/profile']"));
         Assert.assertTrue(avatarSelector.isDisplayed());
 
-
-
+        //playlist locators
+        WebElement addingplaylistBtn = driver.findElement(By.xpath("//*[@id='playlists']"));
+        addingplaylistBtn.click();
+        Thread.sleep(3000);
+        //nav menu playlist
+//        WebElement selectPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
+//        selectPlaylist.click();
+//        Thread.sleep(3000);
+//
+//        //input
+//        WebElement inputtingBox = driver.findElement(By.xpath("//*[@type='text']"));
+//        inputtingBox.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
+//        inputtingBox.sendKeys("newList");
+//        inputtingBox.sendKeys(Keys.ENTER);
+        //inputtingBox.click();
 
 
 
