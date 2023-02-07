@@ -34,22 +34,24 @@ public class HW16_trang020123 {
         Assert.assertTrue(avatarSelector.isDisplayed());
 
         //playlist locators
-        WebElement addingplaylistBtn = driver.findElement(By.xpath("//*[@id='playlists']"));
+        WebElement addingplaylistBtn = driver.findElement(By.xpath("//*[@class='fa fa-plus-circle create']"));
         addingplaylistBtn.click();
-        Thread.sleep(3000);
         //nav menu playlist
-//        WebElement selectPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
-//        selectPlaylist.click();
-//        Thread.sleep(3000);
-//
-//        //input
-//        WebElement inputtingBox = driver.findElement(By.xpath("//*[@type='text']"));
-//        inputtingBox.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
-//        inputtingBox.sendKeys("newList");
-//        inputtingBox.sendKeys(Keys.ENTER);
-        //inputtingBox.click();
+        WebElement selectPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
+        selectPlaylist.click();
+        //input
+         WebElement inputtingBox = driver.findElement(By.xpath("//*[@type='text']"));
+         //Thread.sleep(3000);
+         inputtingBox.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
+         inputtingBox.sendKeys("newList");
+         inputtingBox.sendKeys(Keys.ENTER);
+         inputtingBox.click();
+         //to make sure the newlist is added
 
-
+        //WebElement messageConfirm = driver.findElement(By.xpath("//*[@class='success show']"));
+       WebElement messageConfirm = driver.findElement(By.cssSelector("div.success.show"));
+        //WebElement messageConfirm = driver.findElement(By.cssSelector("div.alertify-logs .top .right"));
+        messageConfirm.isDisplayed();
 
         driver.quit();
     }
