@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
+<suite name="hw17">
 
-    <test name="LoginTests" preserve-order="false">
+    <test name="HomeWork" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
+            <class name="HW17_trang"/>
         </classes>
     </test>
 </suite>
