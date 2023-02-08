@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class HW16_trang020123 {
     @Test(enabled = true)
-    public void CreatePlayListHW () throws InterruptedException {
+    public void CreatePlayListHW() throws InterruptedException {
         WebDriver driver;
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -23,7 +23,7 @@ public class HW16_trang020123 {
         emailField.click();
         emailField.sendKeys("trangoishi99@gmail.com");
 
-        WebElement passwordField= driver.findElement(By.xpath("//*[@type='password']"));
+        WebElement passwordField = driver.findElement(By.xpath("//*[@type='password']"));
         passwordField.click();
         passwordField.sendKeys("te$t$tudent");
 
@@ -40,17 +40,14 @@ public class HW16_trang020123 {
         WebElement selectPlaylist = driver.findElement(By.xpath("//li[(contains(.,'New Playlist'))]"));
         selectPlaylist.click();
         //input
-         WebElement inputtingBox = driver.findElement(By.xpath("//*[@type='text']"));
-         //Thread.sleep(3000);
-         inputtingBox.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
-         inputtingBox.sendKeys("newList");
-         inputtingBox.sendKeys(Keys.ENTER);
-         inputtingBox.click();
-         //to make sure the newlist is added
+        WebElement inputtingBox = driver.findElement(By.xpath("//*[@type='text']"));
+        Thread.sleep(3000);
+        inputtingBox.sendKeys((Keys.chord(Keys.COMMAND, "", Keys.BACK_SPACE)));
+        inputtingBox.sendKeys("newList");
+        inputtingBox.sendKeys(Keys.ENTER);
+        //to make sure the newlist is added
 
-        //WebElement messageConfirm = driver.findElement(By.xpath("//*[@class='success show']"));
-       WebElement messageConfirm = driver.findElement(By.cssSelector("div.success.show"));
-        //WebElement messageConfirm = driver.findElement(By.cssSelector("div.alertify-logs .top .right"));
+        WebElement messageConfirm = driver.findElement(By.xpath("//*[@class='success show']"));
         messageConfirm.isDisplayed();
 
         driver.quit();
