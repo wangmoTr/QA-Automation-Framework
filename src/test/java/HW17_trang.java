@@ -6,8 +6,10 @@ import org.testng.annotations.Test;
 public class HW17_trang extends SimpleBaseTest {
 
     @Test
-    public static void addSongToPlayList() {
+    public void addSongToPlayList() {
         login();
+        WebElement avatarIcon = driver.findElement(By.cssSelector("alt='Avatar of student']"));
+        //Assert.assertTrue(avatarIcon.isDisplayed());
     }
 
 
