@@ -7,10 +7,8 @@ public class HW17_trang extends SimpleBaseTest {
 
     @Test
     public static void addSongToPlayList() {
-
+        login();
     }
 
-    public void login() {
 
-    }
 }
