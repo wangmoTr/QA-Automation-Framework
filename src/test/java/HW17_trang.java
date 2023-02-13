@@ -16,7 +16,7 @@ public class HW17_trang extends SimpleBaseTest {
         //td
         //BossStatus
 
-        WebElement  selectedSong = driver.findElement(By.xpath("//*[contains(text(),'BossStatus']"));
+        WebElement  selectedSong = driver.findElement(By.xpath("//td[contains(text(),'BossStatus']"));
         selectedSong.click();
        //  //span[contains(.,'DarkDays')
     }
