@@ -15,6 +15,7 @@ import java.time.Duration;
 public class SimpleBaseTest {
     WebDriver driver;
     String url;
+    Actions action;
     @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();

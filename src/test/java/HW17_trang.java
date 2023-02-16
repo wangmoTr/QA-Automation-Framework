@@ -11,25 +11,33 @@ public class HW17_trang extends SimpleBaseTest {
         WebElement avatarIcon = driver.findElement(By.xpath("//*[@alt='Avatar of t']"));
         Assert.assertTrue(avatarIcon.isDisplayed());
 
-        WebElement  allSongs = driver.findElement(By.xpath("//*[@href='#!/songs']"));
+        WebElement allSongs = driver.findElement(By.xpath("//*[@href='#!/songs']"));
         allSongs.click();
-        //td
-        //BossStatus
-
-        WebElement  songTitle = driver.findElement(By.xpath("//td[contains(text(),'BossStatus']"));
-        songTitle.click();
-       //  //span[contains(.,'DarkDays')
+        getFAvSongLocator();
+        addToButton();
+        superList();
+        //confirmMessageofAddingSong();
+        //Assert.assertEquals(confirmMessageofAddingSong(),"Added 1 song into \"list1\"");
     }
-    // find the song you like to add
-    
 
-    // add to songlist
+    private void getFAvSongLocator() {
+        WebElement songName = driver.findElement(By.xpath("//*[@id=\"songsWrapper\"]//td[text()=\"BossStatus\"]"));
+        songName.click();
+    }
 
+    public void addToButton() {
+        WebElement addToBtn = driver.findElement(By.xpath("//*[@class=\"btn-add-to\"]"));
+        addToBtn.click();
+    }
 
-    //make sure the song is added
+    public void superList() {
+        WebElement targetList = driver.findElement((By.xpath("//section[@id='songsWrapper']//li[contains(text(), 'list1')]")));
+        targetList.click();
+    }
 
-
+    public void confirmMessageofAddingSong() {
+        WebElement message = driver.findElement(By.cssSelector(".success.show"));
+        //return message.getText();
+        message.isEnabled();
+    }
 }
-
-//        WebElement  listtoAdd = driver.findElement(By.xpath("//a[contains(text(), 'list1')]"));
-//        listtoAdd.click();
