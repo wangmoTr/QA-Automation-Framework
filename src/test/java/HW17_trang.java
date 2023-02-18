@@ -38,6 +38,6 @@ public class HW17_trang extends SimpleBaseTest {
     public void confirmMessageofAddingSong() {
         WebElement message = driver.findElement(By.cssSelector(".success.show"));
         //return message.getText();
-        message.isEnabled();
+        message.isDisplayed();
     }
 }
