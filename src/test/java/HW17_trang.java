@@ -16,7 +16,9 @@ public class HW17_trang extends SimpleBaseTest {
         getFAvSongLocator();
         addToButton();
         superList();
-        //confirmMessageofAddingSong();
+       // WebElement message = driver.findElement(By.cssSelector(".success.show"));
+        //message.isDisplayed();
+       //confirmMessageofAddingSong();
         //Assert.assertEquals(confirmMessageofAddingSong(),"Added 1 song into \"list1\"");
     }
 
@@ -37,7 +39,6 @@ public class HW17_trang extends SimpleBaseTest {
 
     public void confirmMessageofAddingSong() {
         WebElement message = driver.findElement(By.cssSelector(".success.show"));
-        //return message.getText();
-        message.isDisplayed();
+       message.isDisplayed();
     }
 }
